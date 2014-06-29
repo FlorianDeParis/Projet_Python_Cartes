@@ -15,4 +15,4 @@ def deck_mix(deck):
 		del (deck[r])#supression de la carte transferee
 	return deck_melanger
 
-#print(deck_mix(deck=[1,2,3,4,5,6]))#test fonctionnement fct deck_mix
+print(deck_mix(deck=[1,2,3,4,5,6]))#test fonctionnement fct deck_mix

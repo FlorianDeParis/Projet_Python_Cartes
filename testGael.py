@@ -1,8 +1,11 @@
-import pygame
-import sqlite3
+#import pygame
+#import sqlite3
 
-import carte.py
+import carte
 
+maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
+
+#print("carte ou pas")
 
 """
 #pygame.locals import *

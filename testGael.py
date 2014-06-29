@@ -1,8 +1,9 @@
 #import pygame
 #import sqlite3
 
-from carte import carte
-from joueur import joueur
+
+from carte import *
+from joueur import *
 #import carte
 
 monJoueur = joueur(12,"lio",20,100)

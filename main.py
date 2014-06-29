@@ -27,3 +27,25 @@
 #
 #
 
+def main():
+    listeCarte = []
+
+#on charge au démarage toute les cartes
+    #connexion bdd et retour des cartes de la base
+    #boucle sur les resultats et on ceer un objet carte par resultat
+    #   maCarte = carte()
+    #   listeCarte.append(maCarte)
+
+#on affiche un panneaux pour choisir un perso ou en creer un
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    main() # L'appel à la fonction main

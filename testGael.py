@@ -1,7 +1,7 @@
 #import pygame
 #import sqlite3
 
-import carte
+from carte import*
 
 maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
 

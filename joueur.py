@@ -11,9 +11,9 @@ class joueur: #declaration class
         self.cartePose = [] # array
         self.main = [] # array
         self.terrainPoserTour = 0 #boolean si le joueur a poser un terrain ce tout ci ou non
-        self.pointMana = { 'blanc' =  0
-                      ,'rouge' =  0
-                      ,'noir'  =  0
-                      ,'bleu'  =  0
-                      ,'vert'  =  0}
+        self.pointMana = { 'blanc'   :  0
+                            ,'rouge' :  0
+                            ,'noir'  :  0
+                            ,'bleu'  :  0
+                            ,'vert'  :  0}
         #ce tableau va permettre de referancer les mana selectionner lors d'un tour du joueur il sera remplit et vider à la voler,à chaque selection de mana par le joueur, ainsi qu'a chaque fois que les mana seront conssommer par une invocation du joueur, et à chaque changement de tour.

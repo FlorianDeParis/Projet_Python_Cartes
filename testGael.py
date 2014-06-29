@@ -1,11 +1,16 @@
 #import pygame
 #import sqlite3
 
-import carte
+from carte import carte
+from joueur import joueur
+#import carte
 
+monJoueur = joueur(12,"lio",20,100)
 maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
 
-#print("carte ou pas")
+print(type(maCarte) is carte)
+print(type(maCarte) is joueur)
+
 
 """
 #pygame.locals import *

@@ -21,11 +21,11 @@ pygame.init()
 
 fenetre = pygame.display.set_mode((800, 790))
 #image de fond de la meme taille que la fenetre
-fond = pygame.image.load("cartes_magic\fond_plateau.jpg").convert()
+fond = pygame.image.load("cartes_magic/fond_plateau.jpg").convert()
 fenetre.blit(fond, (0,0))
 
 #Chargement et collage du personnage
-perso = pygame.image.load("cartes_magic\#001.jpg").convert_alpha()
+perso = pygame.image.load("cartes_magic/#001.jpg").convert_alpha()
 position_perso = perso.get_rect()
 fenetre.blit(perso, position_perso)
 
@@ -44,24 +44,10 @@ while continuer:
         if event.type == QUIT:
             continuer = 0
     
-        #si c'est un event souris
-        if event.type == MOUSEMOTION:
-            if event.buttons[0] == 1:
-                continuer = 0
-                 
-            if event.button == 1:	#Si clic gauche
-                #On change les coordonnées du perso
-                perso_x = event.pos[0]
-                perso_y = event.pos[1]
-             
-        #si c'est un event clavier
-        if event.type == KEYDOWN:
-
-
+       
     #Re-collage
-    fenetre.blit(fond, (0,0))
-    #fenetre.blit(perso, position_perso)
-    fenetre.blit(perso, (perso_x, perso_y))
+    fenetre.blit(fond,(0,0))
+   
     
     #Rafraichissement
     pygame.display.flip()

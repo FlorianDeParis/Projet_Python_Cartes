@@ -65,7 +65,7 @@ def main():
     #objet joueur passé en parametre
 
 #multiple fonction qui passe une carte d'une liste a une autre
-    #on passe une carte en paramettre
+    # on passe une carte en paramettre
     # biblioteque -> main
     # bibliotheque -> cimetiere
     # main -> carte_pose
@@ -74,6 +74,13 @@ def main():
     # cimetiere -> main
     # carte_posé -> cimetiere
     # carte_pose -> carte engagé (attention la ce n'est pas un déplacement mais une copie)
+
+    #fonction qui test si un terrain a été posé ou non pendant ce tour
+        # recoit un objet joueur
+
+    #fonction qui test si une carte est engagé ou non
+        # recoit un objet carte
+
 
 
 

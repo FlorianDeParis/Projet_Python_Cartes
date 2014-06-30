@@ -1,6 +1,6 @@
 #fction de recherche de carte et deplacement
 
-def search_and_move(deck,card_ID,position):
+def search_and_move(deck,card,position):
 
     cpt=len(deck)
     i=0

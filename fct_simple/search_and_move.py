@@ -5,7 +5,7 @@ def search_and_move(deck,card,position):
     cpt=len(deck)
     i=0
     
-    while deck[i].idCarte!=card_ID :#recherche de la carte dans le deck
+    while deck[i].idCarte!=card.idCarte :#recherche de la carte dans le deck
         i=i+1
 
     deck.insert(position-1,deck[i])

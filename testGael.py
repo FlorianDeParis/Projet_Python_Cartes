@@ -1,7 +1,7 @@
-import pygame
+#import pygame
 #import sqlite3
 
-"""
+
 from carte import *
 from joueur import *
 #import carte
@@ -11,14 +11,15 @@ maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
 
 print(type(maCarte) is carte)
 print(type(maCarte) is joueur)
+
+
 """
-
-
 #pygame.locals import *
 from pygame.locals import *
 
 pygame.init()
 
+<<<<<<< HEAD
 fenetre = pygame.display.set_mode((800, 790))
 #image de fond de la meme taille que la fenetre
 fond = pygame.image.load("cartes_magic/fond_plateau.jpg").convert()
@@ -140,3 +141,7 @@ while general:
     #Rafraichissement
     pygame.display.flip()
         
+=======
+fenetre = pygame.display.set_mode((640, 480))
+"""
+>>>>>>> parent of cd5e539... test graphique

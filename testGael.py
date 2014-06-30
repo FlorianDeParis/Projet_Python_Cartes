@@ -26,7 +26,7 @@ general = 1
 while general:
     
     
-    fenetre = pygame.display.set_mode((800, 790))
+    fenetre = pygame.display.set_mode((300, 300))
     #fond = pygame.image.load("cartes_magic/fond_gris1.jpg").convert()
     #fenetre.blit(fond, (0,0))
     

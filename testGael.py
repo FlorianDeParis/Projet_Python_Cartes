@@ -11,13 +11,14 @@ maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
 
 print(type(maCarte) is carte)
 print(type(maCarte) is joueur)
+
+
 """
-
-
 #pygame.locals import *
 from pygame.locals import *
 
 pygame.init()
+
 
 #BOUCLE INFINIE
 general = 1
@@ -173,6 +174,6 @@ while general:
     #Rafraichissement
     pygame.display.flip()
 
+fenetre = pygame.display.set_mode((640, 480))
 """
-
 

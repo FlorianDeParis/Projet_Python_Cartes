@@ -16,5 +16,5 @@ carte6= carte("carte6",6,"test6","couleur6")
 
 deck=[carte1,carte2,carte3,carte4,carte5,carte6]
 
-print(search_and_move(deck=deck,card_ID=carte1.idCarte,position=5))
+print(search_and_move(deck=deck,card_ID=2,position=5))
 

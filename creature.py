@@ -10,8 +10,12 @@ class creature(carte): #declaration class
     # equitation -> la creature ne peut etre bloqué que par des creature qui ont equitation, en revanche elle peut bloquer les creature avec et sans equitation.
     # double initiative -> inflige des dommage avec l'initiative plus un round de combat normal avec la creature defensive.
     #
-    
-    
+    # piétinement -> une fois qu'elle a infligé suffisamment de blessures pour détruire tous ses bloqueurs, elle inflige les blessures restantes au joueur défenseur.
+    # la flétrissure -> Les blessures infligées à une créature par une source avec la flétrissure ne sont pas marquées sur cette créature. À la place, autant de marqueurs -1/-1 sont mis sur la créature (attention dur a gérer ne pas prendre florian)
+    # indestructibilité -> Si un permanent est indestructible, les règles et les effets ne peuvent pas le détruire. Des règles ou des effets peuvent faire qu'un permanent indestructible soit sacrifié, mis dans un cimetière ou retiré de la partie.
+    # intimidation -> Elle ressemble énormément à la peur, à la différence près qu'elle s'adapte à la (aux) couleur(s) de la créature qui la porte.
+    # débordement -> Cette capacité, attaquante avant tout, consiste à faire perdre -1/-1 à toutes les créatures sans le débordement désignées pour bloquer une créature avec le débordement
+    # imblocable -> ne peux pas etre bloqué par une créature
     
     
     def __init__(self, vie, degat):#constructeur

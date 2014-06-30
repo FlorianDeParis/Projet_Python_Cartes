@@ -1,6 +1,8 @@
 #melange orgainse du deck pour le debut de partie
 import random
-
+from creature import*
+from sort import*
+from terrain import*
 def deck_mix_first(deck):
 	
     deck_inter_monstre_sort=[]#deck intermediaire pour stocker les cartes monstre et sort
@@ -12,9 +14,9 @@ def deck_mix_first(deck):
     
     for i in range(cpt):
 
-        if deck[i]==1 or deck[i]==2 :#carte type monstre et sort (provisoir en attente de la méthode d'identification des 
+        if (type(deck[i]) is creature) or (type(deck[i])is sort) :#carte type monstre et sort (provisoir en attente de la méthode d'identification des 
             deck_inter_monstre_sort.append(deck[i])#deplacement de la carte
-        elif deck[i]==3 :#carte de type terrain
+        elif type(deck[i]) is terrain :#carte de type terrain
             deck_inter_terrain.append(deck[i])
             
     cpt_t=len(deck_inter_terrain)#compteur carte terrain

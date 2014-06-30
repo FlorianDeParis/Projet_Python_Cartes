@@ -19,6 +19,39 @@ from pygame.locals import *
 
 pygame.init()
 
+#BOUCLE INFINIE
+general = 1
+
+while general:
+    
+    
+    fenetre = pygame.display.set_mode((800, 790))
+    #fond = pygame.image.load("cartes_magic/fond_gris1.jpg").convert()
+    #fenetre.blit(fond, (0,0))
+    
+    
+    continuer_choixPerso = 1
+    #Boucle choix perso
+    while continuer_choixPerso:
+        #Limitation de vitesse de la boucle
+        pygame.time.Clock().tick(30)
+    
+        for event in pygame.event.get():	#Attente des événements
+            if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                continuer_choixPerso = 0
+
+
+
+
+
+    for event in pygame.event.get():	#Attente des événements
+        if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+            general = 0
+
+
+"""
+#--------- code général ---------------
+
 fenetre = pygame.display.set_mode((800, 790))
 #image de fond de la meme taille que la fenetre
 fond = pygame.image.load("cartes_magic/fond_plateau.jpg").convert()
@@ -139,4 +172,7 @@ while general:
     
     #Rafraichissement
     pygame.display.flip()
-        
+
+"""
+
+

@@ -11,20 +11,10 @@ carte3= carte("carte3",3,"test3","noir")
 carte4= carte("carte4",4,"test4","bleu")
 carte5= carte("carte5",5,"test5","noir")
 carte6= carte("carte6",6,"test6","vert")
-print(carte1.idCarte)
+
 deck=[carte1,carte2,carte3,carte4,carte5,carte6]
 
 
 print(search_and_move(deck,carte2,5))
 
-'''
 
-from carte import *
-#from joueur import *
-#import carte
-
-#monJoueur = joueur(12,"lio",20,100)
-maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
-
-print(type(maCarte) is carte)
-#print(type(maCarte) is joueur)'''

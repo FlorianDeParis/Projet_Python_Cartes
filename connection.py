@@ -1,5 +1,5 @@
 import sqlite3
-
+from carte import*
 
 
 def create_table():
@@ -75,8 +75,11 @@ def select_all_carte():
 	conn =sqlite3.connect('magic_projet1.sql') 
 	cur =conn.cursor()
 	i=0
-	for row in cur.execute('SELECT * FROM carte '):
-		allcarte.append(row)
+	#def __init__(self, nomCarte, idCarte, url_img, couleurCarte)
+	#  ID_CARTE SMALLINT NOT NULL ,    NOM_CARTE CHAR(32)  ,TYPE SMALLINT  ,   URL_IMAGE VARCHAR(128)  ,  
+#	COULEUR_CARTE VARCHAR(128)  ,    ATTACK SMALLINT  ,    DEFENSE SMALLINT  ,    FONCTION_LIEE CHAR(32)  
+	for row in cur.execute('SELECT NOM_CARTE,ID_CARTE, URL_IMAGE,COULEUR_CARTE FROM carte '):
+		allcarte.append(carte(row[0],row[1],row[2],row[3]))
 		i=i+1
 	cur.close() 
 	conn.close() 

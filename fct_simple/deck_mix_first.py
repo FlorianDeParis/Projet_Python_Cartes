@@ -14,7 +14,7 @@ def deck_mix_first(deck):
     
     for i in range(cpt):
 
-        if (type(deck[i]) is creature) or (type(deck[i])is sort) :#carte type monstre et sort (provisoir en attente de la méthode d'identification des 
+        if (type(deck[i]) is creature) or (type(deck[i])is sort) :#carte type monstre et sort (provisoir en attente de la methode d'identification des 
             deck_inter_monstre_sort.append(deck[i])#deplacement de la carte
         elif type(deck[i]) is terrain :#carte de type terrain
             deck_inter_terrain.append(deck[i])

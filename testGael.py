@@ -25,20 +25,24 @@ general = 1
 while general:
     
     
-    fenetre = pygame.display.set_mode((300, 300))
-    #fond = pygame.image.load("cartes_magic/fond_gris1.jpg").convert()
-    #fenetre.blit(fond, (0,0))
+    fcp = pygame.display.set_mode((300, 300))
+    #fond = pygame.image.load("cartes_magic/fond_gris2_300.jpg").convert()
+    #fcp.blit(fond, (0,0))
     
     buttonCreatePerso = pygbutton.PygButton((75, 200, 150, 30), 'Nouveau')
     buttonChoixPerso = pygbutton.PygButton((75, 250, 150, 30), 'Chargement')
     
     groupButtons = (buttonChoixPerso, buttonCreatePerso)
-    allButtons = groupButtons
+    #allButtons = groupButtons
 
     
-    continuer_choixPerso = 1
+    continuerChoixPerso = 1
+    continuerCreatePerso = 1
+    continuerLoadPerso = 1
+
+    
     #Boucle choix perso
-    while continuer_choixPerso:
+    while continuerChoixPerso:
         #Limitation de vitesse de la boucle
         pygame.time.Clock().tick(30)
     
@@ -50,16 +54,44 @@ while general:
 
 
             if 'click' in buttonChoixPerso.handleEvent(event):
-                 print('chargement')
+                print('chargement')
+                continuerChoixPerso = 0
+                continuerCreatePerso = 0
 
             if 'click' in buttonCreatePerso.handleEvent(event):
-                 print('creation')
-
+                print('creation')
+                continuerLoadPerso = 0
+                continuerChoixPerso = 0
+ 
+                
 
         for b in groupButtons:
-            b.draw(fenetre)
+            b.draw(fcp)
 
         pygame.display.update()
+
+
+
+    f_creat = pygame.display.set_mode((300, 300))
+    fond = pygame.image.load("cartes_magic/fond_gris1_300.jpg").convert()
+    f_creat.blit(fond, (0,0))
+ 
+    #Boucle choix perso
+    while continuerCreatePerso:
+        #Limitation de vitesse de la boucle
+        pygame.time.Clock().tick(30)
+
+
+
+    f_load = pygame.display.set_mode((300, 300))
+    fond = pygame.image.load("cartes_magic/fond_gris2_300.jpg").convert()
+    f_load.blit(fond, (0,0))
+ 
+    #Boucle choix perso
+    while continuerLoadPerso:
+        #Limitation de vitesse de la boucle
+        pygame.time.Clock().tick(30)
+
 
 
 

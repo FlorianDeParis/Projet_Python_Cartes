@@ -1,4 +1,4 @@
-import pygame
+﻿import pygame, pygbutton, sys
 #import sqlite3
 
 """
@@ -19,7 +19,6 @@ from pygame.locals import *
 
 pygame.init()
 
-
 #BOUCLE INFINIE
 general = 1
 
@@ -30,6 +29,12 @@ while general:
     #fond = pygame.image.load("cartes_magic/fond_gris1.jpg").convert()
     #fenetre.blit(fond, (0,0))
     
+    buttonCreatePerso = pygbutton.PygButton((75, 200, 150, 30), 'Nouveau')
+    buttonChoixPerso = pygbutton.PygButton((75, 250, 150, 30), 'Chargement')
+    
+    groupButtons = (buttonChoixPerso, buttonCreatePerso)
+    allButtons = groupButtons
+
     
     continuer_choixPerso = 1
     #Boucle choix perso
@@ -44,13 +49,26 @@ while general:
                 sys.exit()
 
 
+            if 'click' in buttonChoixPerso.handleEvent(event):
+                 print('chargement')
+
+            if 'click' in buttonCreatePerso.handleEvent(event):
+                 print('creation')
+
+
+        for b in groupButtons:
+            b.draw(fenetre)
+
+        pygame.display.update()
+
 
 
 
     for event in pygame.event.get():	#Attente des événements
         if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
             general = 0
-
+            pygame.quit()
+            sys.exit()
 
 """
 #--------- code général ---------------

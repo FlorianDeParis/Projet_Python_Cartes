@@ -1,6 +1,6 @@
 #import sys
 #sys.path.append("home/pi/Desktop/Projet_Python_Cartes/")
-from carte import*
+from carte import *
 
 
 import search_and_move

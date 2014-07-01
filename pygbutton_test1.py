@@ -20,7 +20,7 @@ def main():
     DISPLAYSURFACE = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
     pygame.display.set_caption('PygButton Test 1')
 
-    # buttons that change the window background color
+    # buttons that change the window background color 
     buttonWhiteWinBg = pygbutton.PygButton((50, 50, 60, 30), 'White')
     buttonRedWinBg = pygbutton.PygButton((50, 100, 60, 30), 'Red')
     buttonGreenWinBg = pygbutton.PygButton((50, 150, 60, 30), 'Green')

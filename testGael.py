@@ -40,6 +40,8 @@ while general:
         for event in pygame.event.get():	#Attente des événements
             if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
                 continuer_choixPerso = 0
+                pygame.quit()
+                sys.exit()
 
 
 

@@ -75,19 +75,24 @@ def main():
     # carte_posé -> cimetiere
     # carte_pose -> carte engagé (attention la ce n'est pas un déplacement mais une copie)
 
-    #fonction qui test si un terrain a été posé ou non pendant ce tour
-        # recoit un objet joueur
+#fonction qui test si un terrain a été posé ou non pendant ce tour
+    # recoit un objet joueur
 
-    #fonction qui test si une carte est engagé ou non
-        # recoit un objet carte
-
-
-#fonction qui vérifie si un objet créature peut jouer ou pas "mal d'invocation"
+#fonction qui test si une carte est engagé ou non
+    # recoit un objet carte
 
 
+#fonction qui verifie si un objet créature peut jouer ou pas "mal d'invocation"
+
+#fonction qui verifie si un sort peut etre jouer a ce moment cad
+    #ephemere nimporte quand
+    #rituel seulement pendant la phase de pose
+    #enchantement seulement pendant la phase de pose mais reste sur le terrain
+
+#fonction qui parcour les enchantement sur le terrain et les executes directement sur leurs cibles pour quil soient appliquer en premier
 
 
-
+#fonction qui recoit un objetSort et un objJouer et verifie si le joueur a engager suffisement de mana vis a vis du cout dinvocation attention pour les mana incolor prendre ce qui reste apres avoir tout deduit et retourner true ou false
 
 
 

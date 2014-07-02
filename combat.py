@@ -54,13 +54,62 @@ class combat: #declaration class
 
 
 #fonction qui vérifie si une creature est vivante ou non
+    def verifCreatLife(maCreat):
+        if maCreat.vie > 0:
+            return true
+        else:
+            return false
 
 #fonction qui transfer le contenu de arrayTempSortTour dans arrayAction
+    def transferArrayTempToArrayAction():
+        for blocSort in arrayTempSortTour:
+            arrayAction.append(blocSort)
+
 
 #fonction qui supprime une action sort dans le tableau temporaire arrayTempSortTour et recrédite le mana de la carte dans la quantité de mana du joueur
+    def cancelSort(objJoueur, objSort):
+
+        i = 0 # Notre indice pour la boucle while
+        while i < len(arrayTempSortTour):
+            if objSort.idCarte == arrayTempSortTour[i][0]:
+                objJoueur.pointMana['blanc'] += objSort.coutInvocation['blanc']
+                objJoueur.pointMana['rouge'] += objSort.coutInvocation['rouge']
+                objJoueur.pointMana['noir'] += objSort.coutInvocation['noir']
+                objJoueur.pointMana['bleu'] += objSort.coutInvocation['bleu']
+                objJoueur.pointMana['vert'] += objSort.coutInvocation['vert']
+
+                del arrayTempSortTour[i]
+                i=len(arrayTempSortTour)
+            else:
+                i += 1 # On incrémente i, ne pas oublier !
+
 
 #fonction qui ajoute un array sort dans arrayTempSortTour et qui déduit le cout de mana de la carte de la quantité du joueur
+    def addSortToTemp(objJA,objSort,objCible,typeCible):
+        blocSort = []
+        blocSort.append(objSort.idCarte)
+        blocSort.append(typeCible)
+        if typeCible == "joueur":
+            blocSort.append(objCible.idCarte)
+        else
+            blocSort.append(objCible.id)
 
+        arrayTempSortTour.append(blocSort)
+        objJoueur.pointMana['blanc'] -= objSort.coutInvocation['blanc']
+        objJoueur.pointMana['rouge'] -= objSort.coutInvocation['rouge']
+        objJoueur.pointMana['noir'] -= objSort.coutInvocation['noir']
+        objJoueur.pointMana['bleu'] -= objSort.coutInvocation['bleu']
+        objJoueur.pointMana['vert'] -= objSort.coutInvocation['vert']
+
+        if objSort.coutInvocation['incolore'] > 0:
+            decrementeIncolore(objJoueur, objSort.coutInvocation['incolore'])
+
+#fonction qui decompte dun joueur le nombre dincolore passer en parametre et modifie la couleur dinvocation de le creature
+    def decrementeIncolore(objJoueur, nbIncolor):
+        """ --- a faire --- """
+        print('a faire')
+    
+    
 #fonction qui recoit la creature attaquant et la creature bloqueuse et qui verifie si on peut bloquer ou non
     def testBloquageCreature(creatAttaq, creatBloqu):
         #on met a default bloquer a false et on test uniquement les cas ou une creature peut bloquer
@@ -91,3 +140,9 @@ class combat: #declaration class
                     bloquer = true
         else:
             bloquer = true
+
+
+
+
+
+

@@ -3,8 +3,8 @@ class sort(carte): #declaration class
     
 
   def __init__(self,nomCarte, idCarte, url_img, couleurCarte,idSort):#constructeur
-      carte.__init__(self, nomCarte, idCarte, url_img, couleurCarte)
-      self.idSort = idSort
+      carte.__init__(self, nomCarte, url_img, couleurCarte)
+      """self.idSort = idSort""" #non car il y a un idcarte
       self.type=type
       self.cibleSort = {  'cible' :  0
                           ,'creature' : 0

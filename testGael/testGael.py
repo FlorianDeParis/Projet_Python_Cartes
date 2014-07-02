@@ -26,7 +26,7 @@ while general:
     
     
     fcp = pygame.display.set_mode((300, 300))
-    #fond = pygame.image.load("cartes_magic/fond_gris2_300.jpg").convert()
+    #fond = pygame.image.load("../cartes_magic/fond_gris2_300.jpg").convert()
     #fcp.blit(fond, (0,0))
     
     buttonCreatePerso = pygbutton.PygButton((75, 200, 150, 30), 'Nouveau')
@@ -73,7 +73,7 @@ while general:
 
 
     f_creat = pygame.display.set_mode((300, 300))
-    fond = pygame.image.load("cartes_magic/fond_gris1_300.jpg").convert()
+    fond = pygame.image.load("../cartes_magic/fond_gris1_300.jpg").convert()
     f_creat.blit(fond, (0,0))
  
     #Boucle choix perso
@@ -84,7 +84,7 @@ while general:
 
 
     f_load = pygame.display.set_mode((300, 300))
-    fond = pygame.image.load("cartes_magic/fond_gris2_300.jpg").convert()
+    fond = pygame.image.load("../cartes_magic/fond_gris2_300.jpg").convert()
     f_load.blit(fond, (0,0))
  
     #Boucle choix perso

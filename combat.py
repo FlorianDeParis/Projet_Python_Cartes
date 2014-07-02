@@ -20,7 +20,7 @@ class combat: #declaration class
     def trieList():
         arrayAction.reverse()
         for monTableau in arrayAction:
-            if(len(monTableau) < 3):
+            if len(monTableau) < 3 :
             #il s'agit des creatures
             else:
             #il s'agit d'un sort
@@ -29,12 +29,12 @@ class combat: #declaration class
 
 #fonction qui prend les attaque et la place en fin de la liste
     def checkPositionCreature():
-        if(len(arrayAction) != 2):
+        if len(arrayAction) != 2 :
         
             indice = 0
             i = 0 # Notre indice pour la boucle while
             while i < len(ma_liste):
-                if(len(arrayAction)==2):
+                if len(arrayAction)==2 :
                     indice = i
                 
                 i += 1 # On incrémente i, ne pas oublier !
@@ -63,10 +63,31 @@ class combat: #declaration class
 
 #fonction qui recoit la creature attaquant et la creature bloqueuse et qui verifie si on peut bloquer ou non
     def testBloquageCreature(creatAttaq, creatBloqu):
-        if(len(creatAttaq.caracteristique) != 0):
-            
+        #on met a default bloquer a false et on test uniquement les cas ou une creature peut bloquer
+        #c est plus facile et on est sur de ne pas se tromper
+        bloquer = false
         
-        
-        
+        #on fera en amont le test si la creature est engage ou non avant de arriver ici
+        if len(creatAttaq.caracteristique) != 0:
+            for caract in creatAttaq.caracteristique:
+                if caract == "vol":
+                    if "vol" in creatBloqu.caracteristique:
+                        bloquer = true
+                elif caract == "distortion":
+                    if "distortion" in creatBloqu.caracteristique:
+                        bloquer = true
+                elif caract == "equitation":
+                    if "equitation" in creatBloqu.caracteristique:
+                        bloquer = true
+                elif caract == "peur":
+                    if creatBloqu.couleurCarte == "noir":
+                        bloquer = true
+                elif caract == "intimidation":
+                    if creatAttaq.couleurCarte == creatBloqu.couleurCarte:
+                        bloquer = true
+        elif len(creatBloqu.caracteristique) != 0:
+            for caract in creatBloqu.caracteristique:
+                if caract != "distortion":
+                    bloquer = true
         else:
-            return true
+            bloquer = true

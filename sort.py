@@ -3,13 +3,14 @@ class sort(carte): #declaration class
     
 
   def __init__(self,nomCarte, idCarte, url_img, couleurCarte,idSort):#constructeur
-      carte.__init__(self, nomCarte, url_img, couleurCarte)
-      """self.idSort = idSort""" #non car il y a un idcarte
+      carte.__init__(self, nomCarte, idCarte, url_img, couleurCarte)
+      self.idSort = idSort
       self.type=type
       self.cibleSort = {  'cible' :  0
                           ,'creature' : 0
                           ,'joueur'   :  0
                           }
+<<<<<<< HEAD
   #def Renfort_1():
     # Créature possédant cette aptitude d'origine: Garde Moustique
     # Coût d'exploitation: 1 générique + 1 blanc

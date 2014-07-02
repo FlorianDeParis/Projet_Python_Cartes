@@ -2,12 +2,12 @@
 # lancement du jeu creation du graphique
 # creation d'un joueur ou chargement joueur existant
 # demande connection Resaux ou AI
-# choix deck existant ou création deck avec liste des cartes
+# choix deck existant ou creation deck avec liste des cartes
 # Lancement partie
 #       ------------------
 # Lancement boucle sur tableau joueur tant qu'il y a plus d'un joueur dedans
-#   phase de désengagement (automatique)
-#   phase de pioche (automatique)
+#   phase de desengagement (automatique)
+#   phase de pioche (automatique) fct pioche faite
 #   check si joueur est mort ou non (si oui on eleve le joueur du tableau et on    quitte le jeux)
 #   choix du joueur pose ou non
 #   si oui phase de pose
@@ -17,7 +17,7 @@
 # Fin de boucle
 #
 # retour score
-# incrémente xp joueur
+# incremente xp joueur
 #
 #
 #
@@ -31,12 +31,12 @@ def main():
     listeCarte = select_all_carte()
     listeDeck = []
 
-#on charge au démarage toute les cartes
+#on charge au demarage toute les cartes
     #connexion bdd et retour des cartes de la base
     #boucle sur les resultats et on ceer un objet carte par resultat
     #   maCarte = carte()
     #   listeCarte.append(maCarte)
-#on charge au démarage toute les cartes
+#on charge au demarage toute les cartes
     #connexion bdd et retour des deck de la base
     #on boucle sur les resultat et pour chaque deck on va chercher ses cartes
         #on creer un tableau comme listeCarte_indice  []
@@ -54,45 +54,47 @@ def main():
 
 
 #-----------------------------------------------------------
-#fonction pour savoir si un joueur est mort ou non
-    #objet joueur passé en paramettre
-    # lié au point de vie et a la taille de la bibliotheque une fois a 0 on meurt
+#fonction pour savoir si un joueur est mort ou non FAITE
+    #objet joueur passe en paramettre
+    # lie au point de vie et a la taille de la bibliotheque une fois a 0 on meurt
 
-#fonction pour piocher des cartes
-    #le nombre de carte a piocher passer en paramettre
+#fonction pour piocher des cartes FAITE
+    #le nombre de carte a piocher passer en paramettre 
 
-#fonction compter si la main est supérieur a 7 ou non
-    #objet joueur passé en parametre
+#fonction compter si la main est superieur a 7 ou non FAITE
+    #objet joueur passe en parametre
 
 #multiple fonction qui passe une carte d'une liste a une autre
     # on passe une carte en paramettre
-    # biblioteque -> main
-    # bibliotheque -> cimetiere
-    # main -> carte_pose
-    # main -> cimetiere
-    # cimetiere -> carte_pose
-    # cimetiere -> main
-    # carte_posé -> cimetiere
-    # carte_pose -> carte engagé (attention la ce n'est pas un déplacement mais une copie)
+    # biblioteque -> main FAITE? PIOCHE?
+    # bibliotheque -> cimetiere FAITE
+    # main -> carte_pose FAITE 
+    # main -> cimetiere FAITE 
+    # cimetiere -> carte_pose FAITE
+    # cimetiere -> main FAITE
+    # carte_pose -> cimetiere FAITE
+    # carte_pose -> carte engage (attention la ce n'est pas un deplacement mais une copie)
 
-#fonction qui test si un terrain a été posé ou non pendant ce tour
-    # recoit un objet joueur
+    #fonction qui test si un terrain a ete pose ou non pendant ce tour
+        # recoit un objet joueur
 
-#fonction qui test si une carte est engagé ou non
-    # recoit un objet carte
+    #fonction qui test si une carte est engage ou non
+        # recoit un objet carte
+
+#fonction pour melanger le deck de fa�on organisee pour le premier tour FAITE
+
+#fonction pour  melanger le deck FAITE
+
+#fonction pour chercher et deplacer carte dans le deck FAITE
+
+#fonction pour modifier la vie et les degats d'un monstre FAITE
+
+#fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
 
 
-#fonction qui verifie si un objet créature peut jouer ou pas "mal d'invocation"
-
-#fonction qui verifie si un sort peut etre jouer a ce moment cad
-    #ephemere nimporte quand
-    #rituel seulement pendant la phase de pose
-    #enchantement seulement pendant la phase de pose mais reste sur le terrain
-
-#fonction qui parcour les enchantement sur le terrain et les executes directement sur leurs cibles pour quil soient appliquer en premier
 
 
-#fonction qui recoit un objetSort et un objJouer et verifie si le joueur a engager suffisement de mana vis a vis du cout dinvocation attention pour les mana incolor prendre ce qui reste apres avoir tout deduit et retourner true ou false
+
 
 
 

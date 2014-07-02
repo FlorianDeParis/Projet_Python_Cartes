@@ -1,5 +1,7 @@
 #envoie carte d'un repertoire vers le cimetiere
 
+from carte import*
+
 def cimetiere(cards_list,cimetiere,card):
 	
 	i=0

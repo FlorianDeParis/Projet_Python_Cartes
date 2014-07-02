@@ -70,9 +70,9 @@ def main():
     # bibliotheque -> cimetiere FAITE
     # main -> carte_pose
     # main -> cimetiere FAITE 
-    # cimetiere -> carte_pose
-    # cimetiere -> main
-    # carte_pose -> cimetiere
+    # cimetiere -> carte_pose FAITE
+    # cimetiere -> main FAITE
+    # carte_pose -> cimetiere FAITE
     # carte_pose -> carte engage (attention la ce n'est pas un deplacement mais une copie)
 
     #fonction qui test si un terrain a ete pose ou non pendant ce tour

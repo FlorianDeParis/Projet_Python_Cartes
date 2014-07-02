@@ -67,9 +67,9 @@ def main():
 #multiple fonction qui passe une carte d'une liste a une autre
     # on passe une carte en paramettre
     # biblioteque -> main FAITE? PIOCHE?
-    # bibliotheque -> cimetiere
+    # bibliotheque -> cimetiere FAITE
     # main -> carte_pose
-    # main -> cimetiere
+    # main -> cimetiere FAITE 
     # cimetiere -> carte_pose
     # cimetiere -> main
     # carte_pose -> cimetiere

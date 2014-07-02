@@ -61,7 +61,7 @@ def main():
 #fonction pour piocher des cartes FAITE
     #le nombre de carte a piocher passer en paramettre 
 
-#fonction compter si la main est superieur a 7 ou non
+#fonction compter si la main est superieur a 7 ou non FAITE
     #objet joueur passe en parametre
 
 #multiple fonction qui passe une carte d'une liste a une autre
@@ -75,23 +75,14 @@ def main():
     # carte_pose -> cimetiere
     # carte_pose -> carte engage (attention la ce n'est pas un deplacement mais une copie)
 
-<<<<<<< HEAD
     #fonction qui test si un terrain a ete pose ou non pendant ce tour
         # recoit un objet joueur
 
     #fonction qui test si une carte est engage ou non
         # recoit un objet carte
-=======
-#fonction qui test si un terrain a été posé ou non pendant ce tour
-    # recoit un objet joueur
-
-#fonction qui test si une carte est engagé ou non
-    # recoit un objet carte
->>>>>>> ccc82d155db4e54af64d5091e0b27cf5318f5334
 
 #fonction pour melanger le deck de fa�on organisee pour le premier tour FAITE
 
-<<<<<<< HEAD
 #fonction pour  melanger le deck FAITE
 
 #fonction pour chercher et deplacer carte dans le deck FAITE
@@ -100,19 +91,10 @@ def main():
 
 #fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
 
-=======
-#fonction qui verifie si un objet créature peut jouer ou pas "mal d'invocation"
->>>>>>> ccc82d155db4e54af64d5091e0b27cf5318f5334
-
-#fonction qui verifie si un sort peut etre jouer a ce moment cad
-    #ephemere nimporte quand
-    #rituel seulement pendant la phase de pose
-    #enchantement seulement pendant la phase de pose mais reste sur le terrain
-
-#fonction qui parcour les enchantement sur le terrain et les executes directement sur leurs cibles pour quil soient appliquer en premier
 
 
-#fonction qui recoit un objetSort et un objJouer et verifie si le joueur a engager suffisement de mana vis a vis du cout dinvocation attention pour les mana incolor prendre ce qui reste apres avoir tout deduit et retourner true ou false
+
+
 
 
 

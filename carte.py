@@ -13,5 +13,5 @@ class carte: #declaration class
                                 ,'bleu'      :  0
                                 ,'vert'      :  0
                                 ,'incolore'  :  0}
-# ce tableau représente les cout d'invocation de chaque carte. Il sera comparé au tableau "pointMana" du joueur pour voir si le joueur a payer suffisement de mana pour l'invocation. On traiterai l'incolore en dernier car il s'agit de payer avec n'importe qu'elle couleur de notre choix
-maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
+# ce tableau represente les cout d'invocation de chaque carte. Il sera compare au tableau "pointMana" du joueur pour voir si le joueur a payer suffisement de mana pour l'invocation. On traiterai l'incolore en dernier car il s'agit de payer avec n'importe qu'elle couleur de notre choix
+#maCarte = carte("cauchemard", 10, "ecureuil", "rouge")

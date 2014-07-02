@@ -26,9 +26,9 @@
 #
 #
 #
-
+from connection import* 
 def main():
-    listeCarte = []
+    listeCarte = select_all_carte()
     listeDeck = []
 
 #on charge au démarage toute les cartes
@@ -80,6 +80,18 @@ def main():
 
     #fonction qui test si une carte est engagé ou non
         # recoit un objet carte
+
+
+#fonction qui vérifie si un objet créature peut jouer ou pas "mal d'invocation"
+
+
+
+
+
+
+
+
+
 
 
 

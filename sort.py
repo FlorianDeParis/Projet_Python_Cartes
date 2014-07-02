@@ -1,77 +1,79 @@
+from carte import*
 class sort(carte): #declaration class
     
 
-  def __init__(self):#constructeur
+  def __init__(self,nomCarte, idCarte, url_img, couleurCarte,idSort):#constructeur
+      carte.__init__(self, nomCarte, idCarte, url_img, couleurCarte)
       self.idSort = idSort
       self.type=type
-      self.cibleSort = {  'cible'     =  0
-                          ,'creature' =  0
-                          ,'joueur'   =  0
+      self.cibleSort = {  'cible' :  0
+                          ,'creature' : 0
+                          ,'joueur'   :  0
                           }
-  def Renfort_1():
-    # Coût dexploitation: 1 générique + 1 blanc
-    # Description: défaussez-vous de cette carte: Mettez un marqueur +1/+1 sur la créature ciblée
+  #~ def Renfort_1():
+    #~ # Cout dexploitation: 1 generique + 1 blanc
+    #~ # Description: defaussez-vous de cette carte: Mettez un marqueur +1/+1 sur la creature ciblee
 
-  def Vol():
-    # Quand la créature arrive sur le champ de bataille, vous pouvez chercher dans votre bibliothèque ... 
-    # ... jusqu'à trois cartes, les révéler, les mettre dans votre main, puis mélanger votre bibliothèque.
+  #~ def Vol():
+    #~ # Quand la creature arrive sur le champ de bataille  vous pouvez chercher dans votre bibliotheque 
+    #~ # jusqu a trois cartes les reveler les mettre dans votre main puis melanger votre bibliotheque
 
-  def Aptitude_Missionnaire():
-    # Quand le Missionnaire solitaire arrive sur le champ de bataille, vous gagnez 4 points de vie.
+ #~ def Aptitude_Missionnaire():
+    #~ # Quand le Missionnaire solitaire arrive sur le champ de bataille, vous gagnez 4 points de vie.
 
-  def Toucheterre():
-    # A chaque fois qu'un terrain arrive sur le champ de bataille sous votre contrôle, ...
-    # ... la créature gagne +2/+2 jusqu'à la fin du tour.
+  #~ def Toucheterre():
+    #~ # A chaque fois qu'un terrain arrive sur le champ de bataille sous votre controle, ...
+    #~ # la creature gagne +2/+2 jusqu'a la fin du tour.
 
-  def Art_des_metaux():
-    # Le champion gravé a la protection contre toutes les couleurs tant que vous contrôlez au moins trois artefacts.
+  #~ def Art_des_metaux():
+    #~ # Le champion grave a la protection contre toutes les couleurs tant que vous controlez au moins trois artefacts.
 
-  def Regeneration():
-    # Coût d'exploitation: 1 vert
-    # Description: regénérez la créature (La prochaine fois que cette créature devrait être détruite ce tour-ci, elle ne l'est pas. ...
-    # ... A la place, engagez-la, retirez-lui toutes ses blessures et retirez-la du combat.)
+  #~ def Regeneration():
+    #~ # Cout d'exploitation: 1 vert
+    #~ # Description: regenerez la creature (La prochaine fois que cette creature devrait etre detruite ce tour-ci, elle ne l'est pas. ...
+    #~ # ... A la place, engagez-la, retirez-lui toutes ses blessures et retirez-la du combat.)
 
-  def Generation_de_terrain():
-    # Vous pouvez jouer un terrain supplémentaire pendant chacun de vos tours.
+  #~ def Generation_de_terrain():
+    #~ # Vous pouvez jouer un terrain supplementaire pendant chacun de vos tours.
 
-  def Illusion():
-    # Jouez avec la carte du dessus de votre bibliothèque révélée.
+  #~ def Illusion():
+    #~ # Jouez avec la carte du dessus de votre bibliotheque revelee.
 
-  def Parole_de_l_oracle():
-    # Vous pouvez jouer la carte du dessus de votre bibliothèque si c'est une carte de terrain.
+  #~ def Parole_de_l_oracle():
+    #~ # Vous pouvez jouer la carte du dessus de votre bibliotheque si c'est une carte de terrain.
 
-  def Celerite():
-    # La creature ne peut pas être la cible de sorts non-verts ou de capacités de sources non-vertes.
+  #~ def Celerite():
+    #~ # La creature ne peut pas etre la cible de sorts non-verts ou de capacites de sources non-vertes.
 
-  def Desillusion_inevitable():
-    # La créature ne peut pas être contrecarée
+  #~ def Desillusion_inevitable():
+    #~ # La creature ne peut pas etre contrecaree
 
-  def Oeil_pour_oeil():
-    # A chaque fois que la créature inflige des blessures de combat à un joueur, ce joueur met autant de cartes... 
-    # ... du dessus de sa bibliothèque dans son cimetière
+  #~ def Oeil_pour_oeil():
+    #~ #A chaque fois que la creature inflige des blessures de combat a un joueur, ce joueur met autant de cartes...
+    #~ # ... du dessus de sa bibliotheque dans son cimetiere
 
-  def Reincarnation_magique():
-    # Quand la créature arrive sur le champ de bataille, renvoyer une carte d'éphémère ou de rituel ciblée ...
-    # ... depuis votre cimetière dans votre main.
+  #~ def Reincarnation_magique():
+    #~ # Quand la creature arrive sur le champ de bataille, renvoyer une carte d'ephemere ou de rituel ciblee ...
+    #~ # ... depuis votre cimetiere dans votre main.
 
-  def Destin_maccabre():
-    # La créature gagne +4/+4 tant qu'un adversaire a au moins dix cartes dans son cimetière.
+  #~ def Destin_maccabre():
+    #~ # La creature gagne +4/+4 tant qu'un adversaire a au moins dix cartes dans son cimetiere.
 
-  def Amelioration():
-    # Coût d'exploitation: 1 générique + (flèche retournée?)
-    # Description: Mettez un marqueur +1/+1 sur la créature.
+  #~ def Amelioration():
+    #~ # Cout d'exploitation: 1 generique + (fleche retournee?)
+    #~ # Description: Mettez un marqueur +1/+1 sur la creature.
 
-  def Poison_ardent():
-    # Quand la créature arrive sur le champ de bataille, les créatures que vos adversaires contrôlent ...
-    # ... gagnent -2/-2 jusqu'à la fin du tour.
+  #~ def Poison_ardent():
+    #~ # Quand la creature arrive sur le champ de bataille, les creatures que vos adversaires controlent ...
+    #~ #gagnent-2/-2jusqu'alafindutour.
+    
+  #~ def Malediction():
+    #~ # A chaque fois qu'une creature qu'un adversaire controle est mise dans un cimetiere depuis ...
+    #~ # ... le champs de bataille, ce joueur perd 2 points de vie. 
 
-  def Malediction():
-    # A chaque fois qu'une créature qu'un adversaire contrôle est mise dans un cimetière depuis ...
-    # ... le champs de bataille, ce joueur perd 2 points de vie. 
-
-  def Destruction():
-    # Conditions: (flêche retournée?)
-    # Description: Détruisez la créature ciblée. Elle ne peut pas être regénérée.
+  #~ def Destruction():
+    #~ # Conditions: (fleche retournee?)
+    #~ # Description: Detruisez la creature ciblee. Elle ne peut pas etre regeneree.
   
-# ce tableau va permettre de savoir ce que peut cibler le sortilege, et donc de limiter dans le graphisme les débordements
-# il y aura un switch case pour attribuer un id
+#~ # ce tableau va permettre de savoir ce que peut cibler le sortilege, et donc de limiter dans le graphisme les debordements
+#~ # il y aura un switch case pour attribuer un id

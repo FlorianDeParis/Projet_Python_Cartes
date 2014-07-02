@@ -1,7 +1,7 @@
 
 from carte import*
 
-import search_and_move
+from search_and_move import*
 
 
 
@@ -14,19 +14,7 @@ carte6= carte("carte6",6,"test6","vert")
 
 deck=[carte1,carte2,carte3,carte4,carte5,carte6]
 
-<<<<<<< HEAD
-print(search_and_move(deck=deck,card_ID=2,position=5))
-=======
-print(search_and_move(deck=deck,card=carte2,position=5))
-'''
 
-from carte import *
-#from joueur import *
-#import carte
+print(search_and_move(deck,carte2,5))
 
-#monJoueur = joueur(12,"lio",20,100)
-maCarte = carte("cauchemard", 10, "ecureuil", "rouge")
->>>>>>> 4d3901ec673bfa8f899a5c2f0f2f43552be90715
 
-print(type(maCarte) is carte)
-#print(type(maCarte) is joueur)'''

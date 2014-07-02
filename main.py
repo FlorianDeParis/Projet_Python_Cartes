@@ -26,9 +26,9 @@
 #
 #
 #
-
+from connection import* 
 def main():
-    listeCarte = []
+    listeCarte = select_all_carte()
     listeDeck = []
 
 #on charge au démarage toute les cartes

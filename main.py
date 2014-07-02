@@ -68,7 +68,7 @@ def main():
     # on passe une carte en paramettre
     # biblioteque -> main FAITE? PIOCHE?
     # bibliotheque -> cimetiere FAITE
-    # main -> carte_pose
+    # main -> carte_pose FAITE 
     # main -> cimetiere FAITE 
     # cimetiere -> carte_pose FAITE
     # cimetiere -> main FAITE

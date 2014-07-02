@@ -1,6 +1,8 @@
 import sqlite3
 from carte import*
-
+from creature import*
+from terrain import*
+from sort import*
 
 def create_table():
 	#fichierDonnees ="./magic_projet.sql"
@@ -78,8 +80,14 @@ def select_all_carte():
 	#def __init__(self, nomCarte, idCarte, url_img, couleurCarte)
 	#  ID_CARTE SMALLINT NOT NULL ,    NOM_CARTE CHAR(32)  ,TYPE SMALLINT  ,   URL_IMAGE VARCHAR(128)  ,  
 #	COULEUR_CARTE VARCHAR(128)  ,    ATTACK SMALLINT  ,    DEFENSE SMALLINT  ,    FONCTION_LIEE CHAR(32)  
-	for row in cur.execute('SELECT NOM_CARTE,ID_CARTE, URL_IMAGE,COULEUR_CARTE FROM carte '):
-		allcarte.append(carte(row[0],row[1],row[2],row[3]))
+	for row in cur.execute('SELECT NOM_CARTE,ID_CARTE, URL_IMAGE,COULEUR_CARTE,TYPE,ATTACK,DEFENSE,FONCTION_LIEE FROM carte '):
+		print(row)
+		if (row[4]==1) :
+			allcarte.append(terrain(row[0],row[1],row[2],row[3],row[6])) #recuperer le mana a la place de row[6]
+		elif (row[4]==2) :#carte type monstre et sort (provisoir en attente de la methode d'identification des 
+			allcarte.append(creature(row[0],row[1],row[2],row[3],row[5],row[6],row[7])) #recuperer la caracteristique a la place de row[7]
+		elif (row[4]==3):
+			allcarte.append(sort(row[0],row[1],row[2],row[3],row[6]))#recuperer la caracteristique a la place de row[6]
 		i=i+1
 	cur.close() 
 	conn.close() 

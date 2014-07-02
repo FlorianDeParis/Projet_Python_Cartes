@@ -60,3 +60,13 @@ class combat: #declaration class
 #fonction qui supprime une action sort dans le tableau temporaire arrayTempSortTour et recrédite le mana de la carte dans la quantité de mana du joueur
 
 #fonction qui ajoute un array sort dans arrayTempSortTour et qui déduit le cout de mana de la carte de la quantité du joueur
+
+#fonction qui recoit la creature attaquant et la creature bloqueuse et qui verifie si on peut bloquer ou non
+    def testBloquageCreature(creatAttaq, creatBloqu):
+        if(len(creatAttaq.caracteristique) != 0):
+            
+        
+        
+        
+        else:
+            return true

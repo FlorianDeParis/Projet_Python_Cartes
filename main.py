@@ -82,6 +82,18 @@ def main():
         # recoit un objet carte
 
 
+#fonction qui vérifie si un objet créature peut jouer ou pas "mal d'invocation"
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

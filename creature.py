@@ -1,6 +1,6 @@
 from carte import*
 class creature(carte): #declaration class
-    #---------------DEFENCE----------------
+    #---------------DEFENSE----------------
  # vol    -> la creature acquier le vol et ne peut etre bloque que par des creature qui ont le vol.
  # distortion -> la creature acquier la distortion et ne peut bloque et etre bloque que par des creature qui ont la distortion.
   # peur -> ne peut etre bloquee que par des creatures noires.

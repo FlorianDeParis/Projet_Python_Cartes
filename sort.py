@@ -31,10 +31,14 @@ class sort(carte): #declaration class
     # A chaque fois qu'un terrain arrive sur le champ de bataille sous votre contrôle, ...
     # ... la créature gagne +2/+2 jusqu'à la fin du tour.
 
+  #def Affinite_pour_les_plaines():
+    # Créature possédant cette aptitude d'origine: Golem de rasoirs
+    # Description: Ce sort coûte (un générique) de moins à jouer pour chaque plaine que vous contrôlez.
+
   #def Art_des_metaux():
     # Créature possédant cette aptitude d'origine: Champion Gravé
     # Le champion gravé a la protection contre toutes les couleurs tant que vous contrôlez au moins trois artefacts.
-
+  
   #def Regeneration():
     # Créature possédant cette aptitude d'origine: Troll à la trique
     # Coût d'exploitation: 1 vert

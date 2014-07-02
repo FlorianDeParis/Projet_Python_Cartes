@@ -7,6 +7,10 @@ def check_player_alive(joueur):
 	if joueur.pointDeVie == 0:
 		
 		return TRUE
+		
+	elif joueur.bibliotheque == []:
+	
+		return TRUE
 	
 	else :
 		

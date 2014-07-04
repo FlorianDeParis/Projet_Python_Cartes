@@ -110,10 +110,18 @@ def main():
 
 #fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
     #prendre en compte la celerite des creatures
-
+    def checkinvocatiuon(objCreature):
+        if objCreature.mal_invocation == 0 or "celerite" in objCreature.caracteristique:
+            return true
+        else:
+            return false
 
 #fonction qui parcour en debut de tour les creature du joueur sur le plateau et enleve le mal d invocation a ceux qui lon
-
+    def setInvocation():
+        for joueur in listeJoueur:
+            for creature in joueur.cartePose:
+                if creature.mal_invocation == 1:
+                    creature.mal_invocation = 0
 
 
 

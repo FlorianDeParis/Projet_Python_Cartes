@@ -44,3 +44,4 @@ class creature(carte): #declaration class
     self.vie = vie
     self.degat = degat
     self.caracteristique = []
+    self.mal_invocation = 1

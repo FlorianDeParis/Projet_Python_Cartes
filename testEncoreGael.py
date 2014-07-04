@@ -4,6 +4,9 @@ from carte import *
 def changeColor(objCarte):
     objCarte.couleurCarte = "bleu"
 
+def invocationChange(listeCouleur):
+    listeCouleur['noir'] += 2
+    return listeCouleur
 
 listeCarte = []
 main = []
@@ -18,9 +21,30 @@ listeCarte.append(maCarte2)
 listeCarte.append(maCarte3)
 listeCarte.append(maCarte4)
 
+for elt in listeCarte:
+    print(elt.coutInvocation)
+print("-----------------")
+
 main.append(listeCarte[1])
 main.append(listeCarte[3])
 
+for elt in main:
+    print(elt.coutInvocation)
+
+print("--------- Masse --------")
+
+listeCarte[3].coutInvocation = invocationChange(listeCarte[3].coutInvocation)
+
+for elt in listeCarte:
+    print(elt.coutInvocation)
+
+print("-----------------")
+
+for elt in main:
+    print(elt.coutInvocation)
+    
+
+"""
 print("-----first liste -----")
 
 for elt in listeCarte:
@@ -55,3 +79,4 @@ listeCarte[1].couleurCarte = "rouge"
 
 for elt in main:
     print(elt.couleurCarte)
+"""

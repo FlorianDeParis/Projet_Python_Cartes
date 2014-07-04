@@ -22,8 +22,10 @@ class combat: #declaration class
         for monTableau in arrayAction:
             if len(monTableau) < 3 :
             #il s'agit des creatures
+                combatCreature(monTableau)
             else:
             #il s'agit d'un sort
+                appliqueSort(monTableau)
 
 
 
@@ -44,14 +46,22 @@ class combat: #declaration class
 
 
 #fonction applique les sort
-    def appliqueSort(arraySort):
+    def appliqueSort(arraySort): """pas encore faite """
         #on attend un array de type [id sort, type cible, id cible]
+        """voila je pense que un dictionnaire de fonction ferai laffaire avec toujours les memes parametre et ce serai chaque fonction qui genre ne interne les parametres"""
+
+
 
 #fonction de combat
 #je m'en occupe
+    def combatCreature(blocCreature):
 
 #fonction qui recoit un objet sort avec une cible et qui verifie si la cible du sort est bien dans les cible possible de l'objet sort
-
+    def testCible(cible, objSort):""" je ne sais pas si on dois recevoir le conteneur ou la cible uniquement """
+        if objSort.cibleSort[cible] = 1:
+            return true
+        else:
+            return false
 
 #fonction qui vérifie si une creature est vivante ou non
     def verifCreatLife(maCreat):
@@ -91,7 +101,7 @@ class combat: #declaration class
         blocSort.append(typeCible)
         if typeCible == "joueur":
             blocSort.append(objCible.idCarte)
-        else
+        else:
             blocSort.append(objCible.id)
 
         arrayTempSortTour.append(blocSort)
@@ -102,12 +112,33 @@ class combat: #declaration class
         objJoueur.pointMana['vert'] -= objSort.coutInvocation['vert']
 
         if objSort.coutInvocation['incolore'] > 0:
-            decrementeIncolore(objJoueur, objSort.coutInvocation['incolore'])
+            decrementeIncolore(objJoueur, objSort)
 
 #fonction qui decompte dun joueur le nombre dincolore passer en parametre et modifie la couleur dinvocation de le creature
-    def decrementeIncolore(objJoueur, nbIncolor):
-        """ --- a faire --- """
-        print('a faire')
+    def decrementeIncolore(objJoueur, objCarte):
+        
+        while objSort.coutInvocation['incolore'] != 0:
+            if objJoueur.pointMana['blanc'] > 0:
+                objJoueur.pointMana['blanc'] -= 1
+                objSort.coutInvocation['blanc'] += 1
+                objSort.coutInvocation['incolore'] -= 1
+            elif objJoueur.pointMana['rouge'] > 0:
+                objJoueur.pointMana['rouge'] -= 1
+                objSort.coutInvocation['rouge'] += 1
+                objSort.coutInvocation['incolore'] -= 1
+            elif objJoueur.pointMana['noir'] > 0:
+                objJoueur.pointMana['noir'] -= 1
+                objSort.coutInvocation['noir'] += 1
+                objSort.coutInvocation['incolore'] -= 1
+            elif objJoueur.pointMana['bleu'] > 0:
+                objJoueur.pointMana['bleu'] -= 1
+                objSort.coutInvocation['bleu'] += 1
+                objSort.coutInvocation['incolore'] -= 1
+            elif objJoueur.pointMana['vert'] > 0:
+                objJoueur.pointMana['vert'] -= 1
+                objSort.coutInvocation['vert'] += 1
+                objSort.coutInvocation['incolore'] -= 1
+
     
     
 #fonction qui recoit la creature attaquant et la creature bloqueuse et qui verifie si on peut bloquer ou non

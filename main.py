@@ -54,39 +54,47 @@ def main():
 
 
 #-----------------------------------------------------------
+"""faite"""
 #fonction pour savoir si un joueur est mort ou non FAITE
     #objet joueur passe en paramettre
     # lie au point de vie et a la taille de la bibliotheque une fois a 0 on meurt
 
+"""faite"""
 #fonction pour piocher des cartes FAITE
     #le nombre de carte a piocher passer en paramettre 
 
+"""faite"""
 #fonction compter si la main est superieur a 7 ou non FAITE
     #objet joueur passe en parametre
 
 #multiple fonction qui passe une carte d'une liste a une autre
     # on passe une carte en paramettre
     # biblioteque -> main FAITE? PIOCHE?
-    # bibliotheque -> cimetiere FAITE
-    # main -> carte_pose FAITE 
-    # main -> cimetiere FAITE 
-    # cimetiere -> carte_pose FAITE
-    # cimetiere -> main FAITE
-    # carte_pose -> cimetiere FAITE
-    # carte_pose -> carte engage (attention la ce n'est pas un deplacement mais une copie)
+"""faite"""    # bibliotheque -> cimetiere FAITE
+"""faite"""    # main -> carte_pose FAITE
+"""faite"""    # main -> cimetiere FAITE
+"""faite"""    # cimetiere -> carte_pose FAITE
+"""faite"""    # cimetiere -> main FAITE
+"""faite"""    # carte_pose -> cimetiere FAITE
 
-    #fonction qui test si un terrain a ete pose ou non pendant ce tour
-        # recoit un objet joueur
+# carte_pose -> carte engage (attention la ce n'est pas un deplacement mais une copie)
 
-    #fonction qui test si une carte est engage ou non
-        # recoit un objet carte
+#fonction qui test si un terrain a ete pose ou non pendant ce tour
+    # recoit un objet joueur
 
+#fonction qui test si une carte est engage ou non
+    # recoit un objet carte
+
+"""faite"""
 #fonction pour melanger le deck de façon organisee pour le premier tour FAITE
 
+"""faite"""
 #fonction pour  melanger le deck FAITE
 
+"""faite"""
 #fonction pour chercher et deplacer carte dans le deck FAITE
 
+"""faite"""
 #fonction pour modifier la vie et les degats d'un monstre FAITE
 
 #fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"

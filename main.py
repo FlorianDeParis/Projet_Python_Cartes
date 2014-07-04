@@ -30,7 +30,7 @@ from connection import*
 def main():
     listeCarte = select_all_carte()
     listeDeck = []
-
+    global listeJoueur = []#la mettre public accessible
 #on charge au demarage toute les cartes
     #connexion bdd et retour des cartes de la base
     #boucle sur les resultats et on ceer un objet carte par resultat
@@ -81,10 +81,20 @@ def main():
 
 #fonction qui test si un terrain a ete pose ou non pendant ce tour
     # recoit un objet joueur
+    def checkLandField(objJoueur):
+        if objJoueur.terrainPoserTour == 0:
+            return false
+        else:
+            return true
 
 #fonction qui test si une carte est engage ou non
     # recoit un objet carte
-
+    def checkCardEngaged(objCard):
+        engaged = false
+        for joueur in listeJoueur:
+            if objCard in joueur.carteEngage:
+                engaged = true
+        return engaged
 """faite"""
 #fonction pour melanger le deck de façon organisee pour le premier tour FAITE
 
@@ -97,10 +107,12 @@ def main():
 """faite"""
 #fonction pour modifier la vie et les degats d'un monstre FAITE
 
+
 #fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
+    #prendre en compte la celerite des creatures
 
 
-
+#fonction qui parcour en debut de tour les creature du joueur sur le plateau et enleve le mal d invocation a ceux qui lon
 
 
 

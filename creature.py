@@ -9,18 +9,28 @@ class creature(carte): #declaration class
   # imblocable -> ne peux pas etre bloque par une creature
   
   
+  #--------------- SELECTION CARTE ----------------
+  # celerite -> n'est pas sujet au mal d'invocation.
   
   #---------------ATTAQUE----------------
-  # celerite -> n'est pas sujet au mal d'invocation.
   # contact mortel -> lors d'une attaque la creature bloqueuse meurt.
-  # lien de vie -> le proprietaire de la creature recupere autant de point de vie que de point de degat inflige par cette creature.
+  
+  
+  
+  
   # initiative -> attaque en premier et ne subit donc pas de dommage dans le cas de creature de force egal.
+  
   # double initiative -> inflige des dommage avec l'initiative plus un round de combat normal avec la creature defensive.
-  #
-  # pietinement -> une fois qu'elle a inflige suffisamment de blessures pour detruire tous ses bloqueurs, elle inflige les blessures restantes au joueur defenseur.
-  # indestructibilite -> Si un permanent est indestructible, les regles et les effets ne peuvent pas le detruire. Des regles ou des effets peuvent faire qu'un permanent indestructible soit sacrifie, mis dans un cimetiere ou retire de la partie.
+  
   # debordement -> Cette capacite, attaquante avant tout, consiste a faire perdre -1/-1 a toutes les creatures sans le debordement designees pour bloquer une creature avec le debordement
   
+  # pietinement -> une fois qu'elle a inflige suffisamment de blessures pour detruire tous ses bloqueurs, elle inflige les blessures restantes au joueur defenseur.
+  
+  # indestructible -> Si un permanent est indestructible, les regles et les effets ne peuvent pas le detruire. Des regles ou des effets peuvent faire qu'un permanent indestructible soit sacrifie, mis dans un cimetiere ou retire de la partie.
+  
+  
+  
+  # lien de vie -> le proprietaire de la creature recupere autant de point de vie que de point de degat inflige par cette creature.
   
   
   #---------------MISE DE COTE----------------

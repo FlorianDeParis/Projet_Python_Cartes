@@ -50,11 +50,247 @@ class combat: #declaration class
         #on attend un array de type [id sort, type cible, id cible]
         """voila je pense que un dictionnaire de fonction ferai laffaire avec toujours les memes parametre et ce serai chaque fonction qui genre ne interne les parametres"""
 
+#fonction qui retourne un objet joueur qui possede la creature
+    def joueurToCreature(objCreature):
+        for joueur in listeJoueur:
+            if objCreature in joueur.cartePose:
+                return joueur
+
+#fonction qui retourne un objet joueur qui ne possede pas la creature plus vicieux
+def joueurNotToCreature(objCreature):
+    for joueur in listeJoueur:
+        if objCreature not in joueur.cartePose:
+            return joueur
 
 
 #fonction de combat
-#je m'en occupe
     def combatCreature(blocCreature):
+        #blocCreature[0] -> attaquant
+        #blocCreature[1] -> bloqueur
+        
+        #ici on test si il y a un bloqueur pour la creature qui attaque
+        #if Object is None:
+            
+        if type(blocCreature[1]) is creature:
+            theAttaq = joueurToCreature(blocCreature[0])
+            thedef = joueurToCreature(blocCreature[1])
+            
+            if len(blocCreature[0].caracteristique) > 0:
+                for caract in blocCreature[0].caracteristique:
+                    if caract == "contact mortel":
+                        if len(blocCreature[1].caracteristique)>0:
+                            if "indestructible" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                            if "contact mortel" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                blocCreature[1].vie = 0
+                                blocCreature[0].vie = 0
+                            if "initiative" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[1].vie = 0
+                            if "double initiative" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                                    blocCreature[1].vie = 0
+                            if "lien de vie" in blocCreature[1].caracteristique:
+                                theDef.pointDeVie += blocCreature[1].degat
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                blocCreature[1].vie = 0
+                        else:
+                            blocCreature[1].vie -= blocCreature[0].degat
+                            blocCreature[0].vie -= blocCreature[1].degat
+                            blocCreature[1].vie = 0
+        
+                    elif caract == "initiative":
+                        if len(blocCreature[1].caracteristique)>0:
+                            if "indestructible" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                            if "contact mortel" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                if verifCreatLife(blocCreature[1]):
+                                    blocCreature[0].degat = 0
+                            if "initiative" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                            if "double initiative" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                if verifCreatLife(blocCreature[1]):
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                            if "lien de vie" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                if verifCreatLife(blocCreature[1]):
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                                    theDef.pointDeVie += blocCreature[1].degat
+                        else:
+                            blocCreature[1].vie -= blocCreature[0].degat
+                            if verifCreatLife(blocCreature[1]):
+                                blocCreature[0].vie -= blocCreature[1].degat
+        
+                    elif caract == "double initiative":
+                        if len(blocCreature[1].caracteristique)>0:
+                            if "indestructible" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                            if "contact mortel" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                if verifCreatLife(blocCreature[1]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                                    blocCreature[0].vie = 0
+                            if "initiative" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                            if "double initiative" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]) and  verifCreatLife(blocCreature[1]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                            if "lien de vie" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                if verifCreatLife(blocCreature[1]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                                    theDef.pointDeVie += blocCreature[1].degat
+                        else:
+                            blocCreature[1].vie -= blocCreature[0].degat
+                            if verifCreatLife(blocCreature[1]):
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                    elif caract == "debordement":
+                            blocCreature[1].vie -= 1
+                            blocCreature[1].degat -= 1
+                        if verifCreatLife(blocCreature[1]):
+                            if len(blocCreature[1].caracteristique)>0:
+                                if "indestructible" in blocCreature[1].caracteristique:
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                                if "contact mortel" in blocCreature[1].caracteristique:
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                                    blocCreature[0].vie = 0
+                                if "initiative" in blocCreature[1].caracteristique:
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                        if verifCreatLife(blocCreature[1]):
+                                            blocCreature[0].vie -= blocCreature[1].degat
+                                if "double initiative" in blocCreature[1].caracteristique:
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                        if verifCreatLife(blocCreature[1]):
+                                            blocCreature[0].vie -= blocCreature[1].degat
+                                            blocCreature[1].vie -= blocCreature[0].degat
+                                if "lien de vie" in blocCreature[1].caracteristique:
+                                    theDef.pointDeVie += blocCreature[1].degat
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                            else:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                    elif caract == "pietinement":
+                        if len(blocCreature[1].caracteristique)>0:
+                            if "indestructible" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                            if "contact mortel" in blocCreature[1].caracteristique:
+                                if blocCreature[0].degat > blocCreature[1].vie:
+                                    thedef.pointDeVie -= blocCreature[0].degat - blocCreature[1].vie
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                blocCreature[0].vie = 0
+                            if "initiative" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]):
+                                    if blocCreature[0].degat > blocCreature[1].vie:
+                                        thedef.pointDeVie -= blocCreature[0].degat - blocCreature[1].vie
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                            if "double initiative" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]):
+                                    if blocCreature[0].degat > blocCreature[1].vie:
+                                        thedef.pointDeVie -= blocCreature[0].degat - blocCreature[1].vie
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                            if "lien de vie" in blocCreature[1].caracteristique:
+                                if blocCreature[0].degat > blocCreature[1].vie:
+                                    thedef.pointDeVie -= blocCreature[0].degat - blocCreature[1].vie
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                theDef.pointDeVie += blocCreature[1].degat
+                        else:
+                            if blocCreature[0].degat > blocCreature[1].vie:
+                                thedef.pointDeVie -= blocCreature[0].degat - blocCreature[1].vie
+                            blocCreature[1].vie -= blocCreature[0].degat
+                            blocCreature[0].vie -= blocCreature[1].degat
+                    elif caract == "indestructible":
+                        blocCreature[1].vie -= blocCreature[0].degat
+                        if len(blocCreature[1].caracteristique)>0:
+                            if "lien de vie" in blocCreature[1].caracteristique:
+                                theDef.pointDeVie += blocCreature[1].degat
+                    elif caract == "lien de vie":
+                        if len(blocCreature[1].caracteristique)>0:
+                            if "indestructible" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                theAttaq.pointDeVie += blocCreature[0].degat
+                            if "contact mortel" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                theAttaq.pointDeVie += blocCreature[0].degat
+                                blocCreature[0].vie = 0
+                            if "initiative" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    theAttaq.pointDeVie += blocCreature[0].degat
+                            if "double initiative" in blocCreature[1].caracteristique:
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                if verifCreatLife(blocCreature[0]):
+                                    blocCreature[1].vie -= blocCreature[0].degat
+                                    blocCreature[0].vie -= blocCreature[1].degat
+                                    theAttaq.pointDeVie += blocCreature[0].degat
+                            if "lien de vie" in blocCreature[1].caracteristique:
+                                blocCreature[1].vie -= blocCreature[0].degat
+                                blocCreature[0].vie -= blocCreature[1].degat
+                                theAttaq.pointDeVie += blocCreature[0].degat
+                                theDef.pointDeVie += blocCreature[1].degat
+                        else:
+                            blocCreature[1].vie -= blocCreature[0].degat
+                            blocCreature[0].vie -= blocCreature[1].degat
+                            theAttaq.pointDeVie += blocCreature[0].degat
+        #defenseur a des apt mais pas attaquant
+            elif len(blocCreature[0].caracteristique) > 0:
+                if "indestructible" in blocCreature[1].caracteristique:
+                    blocCreature[0].vie -= blocCreature[1].degat
+                if "contact mortel" in blocCreature[1].caracteristique:
+                    blocCreature[1].vie -= blocCreature[0].degat
+                    blocCreature[0].vie -= blocCreature[1].degat
+                    blocCreature[0].vie = 0
+                if "initiative" in blocCreature[1].caracteristique:
+                    blocCreature[0].vie -= blocCreature[1].degat
+                    if verifCreatLife(blocCreature[0]):
+                        blocCreature[1].vie -= blocCreature[0].degat
+                if "double initiative" in blocCreature[1].caracteristique:
+                    blocCreature[0].vie -= blocCreature[1].degat
+                    if verifCreatLife(blocCreature[0]):
+                        blocCreature[1].vie -= blocCreature[0].degat
+                        blocCreature[0].vie -= blocCreature[1].degat
+                if "lien de vie" in blocCreature[1].caracteristique:
+                    blocCreature[1].vie -= blocCreature[0].degat
+                    blocCreature[0].vie -= blocCreature[1].degat
+                    theDef.pointDeVie += blocCreature[1].degat
+            else:
+                #combat classique
+                blocCreature[1].vie -= blocCreature[0].degat
+                blocCreature[0].vie -= blocCreature[1].degat
+        else:#si pas de creature bloqueuse le joueur prend tout
+            thedef = joueurNotToCreature(blocCreature[0])
+            thedef.pointDeVie -= blocCreature[0].degat
+
 
 #fonction qui recoit un objet sort avec une cible et qui verifie si la cible du sort est bien dans les cible possible de l'objet sort
     def testCible(cible, objSort):""" je ne sais pas si on dois recevoir le conteneur ou la cible uniquement """

@@ -2,13 +2,19 @@ from carte import*
 from creature import*
 from sort import*
 
-def test_type():
+def test_type(type):
 	
-	creature=creature()
-	sort=sort()
+	a=0
 	
-	print(type(creature))
-	print(type(sort))
+	if type=="creature":
+		a=creature()
+		
+	elif type=="sort":
+		a=sort()
+	return a
+	
+print(type(creature))
+print(type(sort))
 	
 	
 	

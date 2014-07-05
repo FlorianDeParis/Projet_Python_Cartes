@@ -105,3 +105,24 @@ def insert(insert):
 	conn.close() 
 	
 print(select_all_carte())
+def findCarte(carte):
+	
+#		purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),('2006-04-06', 'SELL', 'IBM', 500, 53.00),]
+#c.executemany('INSERT INTO' table 'VALUES (?,?,?,?,?)', purchases)
+	idcarte= carte.idCarte
+	fichierDonnees ="./magic_projet.sql"
+	conn =sqlite3.connect('magic_projet1.sql') 
+	cur =conn.cursor()
+	for row in cur.execute('SELECT NOM_CARTE,ID_CARTE, URL_IMAGE,COULEUR_CARTE,TYPE,ATTACK,DEFENSE,FONCTION_LIEE FROM carte WHERE ID_CARTE ='idcarte):
+		if (row[4]==1) :
+			allcarte.append(terrain(row[0],row[1],row[2],row[3],row[6])) #recuperer le mana a la place de row[6]
+		elif (row[4]==2) :#carte type monstre et sort (provisoir en attente de la methode d'identification des 
+			allcarte.append(creature(row[0],row[1],row[2],row[3],row[5],row[6],row[7])) #recuperer la caracteristique a la place de row[7]
+		elif (row[4]==3):
+			allcarte.append(sort(row[0],row[1],row[2],row[3],row[6]))#recuperer la caracteristique a la place de row[6]
+		i=i+1
+	conn.commit()
+	cur.close() 
+	conn.close() 
+	
+print(select_all_carte())

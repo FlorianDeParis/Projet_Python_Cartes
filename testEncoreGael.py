@@ -1,6 +1,20 @@
 from carte import *
 
+i=0	
+for i in range(3):
+    print(i)
 
+
+
+ma_liste = [-5, -2, 1, 4, 7, 10]
+print(ma_liste)
+print(ma_liste[0])
+print("--------")
+del(ma_liste[0])
+print(ma_liste)
+print(ma_liste[0])
+print("--------")
+"""
 def changeColor(objCarte):
     objCarte.couleurCarte = "bleu"
 
@@ -43,7 +57,7 @@ print("-----------------")
 for elt in main:
     print(elt.coutInvocation)
     
-
+"""
 """
 print("-----first liste -----")
 

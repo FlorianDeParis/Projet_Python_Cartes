@@ -7,6 +7,8 @@ class carte: #declaration class
         self.idCarte = idCarte
         self.url_img = url_img
         self.couleurCarte = couleurCarte
+        self.x = 0
+        self.y = 0
         self.coutInvocation = {  'blanc'     :  0
                                 ,'rouge'     :  0
                                 ,'noir'      :  0

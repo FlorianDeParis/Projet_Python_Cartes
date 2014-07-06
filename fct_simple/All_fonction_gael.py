@@ -8,22 +8,18 @@ from carte import*
 import random
 
 #60 ingeniosite de jace pioche 3 carte
-def ingeniosite_de_jace(main_joueur,deck):
-	
-	main_joueur_final=[]
-	
-	main_joueur_final=pioche(deck,main_joueur,3)
-	
-	return main_joueur_final
+"""fait"""
+def ingeniosite_de_jace(objJoueur):
+	pioche(objJoueur,3,X,Y) """ attention il faut saisir des coordonnee generique de cimetiere ici """
+
 
 #print(ingeniosite_de_jace([1,2,3,4,5,6],[7,8,9,10,11,12]))
 
+"""fait"""
 #25_raise_the_alarm ajoute 1/1 a une creature
 def raise_the_alarm(creature):
-	
-	creature=creature_carac_modif(creature,1,1)
-	
-	return creature
+	creature_carac_modif(creature,1,1)
+
 	
 #52_ecurage_de_pensee envoi 2 premieres cartes du deck dans le cimetiere
 """fait"""
@@ -117,9 +113,11 @@ def deck_mix_first(objJoueur):
 
 """fait"""
 #pioche des cartes dans le deck
-def pioche(objJoueur,nb_carte):
+def pioche(objJoueur,nb_carte,X,Y):
     i=0
     for i in range(nb_carte):
+        objJoueur.bibliotheque[i].x = X
+        objJoueur.bibliotheque[i].y = Y
         objJoueur.main.append(objJoueur.bibliotheque[i]) #ajout des cartes du deck dans la main du joueur
         del objJoueur.bibliotheque[i]
 
@@ -146,22 +144,26 @@ def deck_mix(objJoueur):
 
 #envoie carte de la main vers les cartes posee
 """fait"""
-def hand_to_game(objJoueur,card):
+def hand_to_game(objJoueur,card,X,Y):
 	i=0
 	while objJoueur.main[i].idCarte != card.idCarte:
 		i=i+1
 		
+    objJoueur.main[i].x = X
+    objJoueur.main[i].y = Y
 	objJoueur.cartePose.append(objJoueur.main[i])
 	del objJoueur.cartePose[i]
 
 #envoie carte d'un repertoire vers le cimetiere
 """fait"""
-def cimetiere(objJoueur,card):
+def cimetiere(objJoueur,card,X,Y):
 	i=0
 	if card in objJoueur.cartePose:
         while objJoueur.cartePose[i].idCarte != card.idCarte:
             i=i+1
 		
+        objJoueur.cartePose[i].x = X
+        objJoueur.cartePose[i].y = Y
         objJoueur.cimetiere.append(objJoueur.cartePose[i])
         del objJoueur.cartePose[i]
             
@@ -169,6 +171,8 @@ def cimetiere(objJoueur,card):
         while objJoueur.main[i].idCarte != card.idCarte:
             i=i+1
 		
+        objJoueur.main[i].x = X
+        objJoueur.main[i].y = Y
         objJoueur.cimetiere.append(objJoueur.main[i])
         del objJoueur.main[i]
 
@@ -176,30 +180,49 @@ def cimetiere(objJoueur,card):
         while objJoueur.bibliotheque[i].idCarte != card.idCarte:
             i=i+1
 		
+        objJoueur.bibliotheque[i].x = X
+        objJoueur.bibliotheque[i].y = Y
         objJoueur.cimetiere.append(objJoueur.bibliotheque[i])
         del objJoueur.bibliotheque[i]
 
 
-#envoie carte du cimetiere vers un repertoire
+#envoie carte du cimetiere vers la main
 """fait"""
-def cimetiereToHand(objJoueur,card):
+def cimetiereToHand(objJoueur,card , X ,Y):
 	i=0
 	while objJoueur.cimetiere[i].idCarte != card.idCarte:
 		i=i+1
 		
+    objJoueur.cimetiere[i].x = X
+    objJoueur.cimetiere[i].y = Y
 	objJoueur.main.append(objJoueur.cimetiere[i])
 	del objJoueur.cimetiere[i]
 
+#envoie carte du cimetiere vers le plateau
 """fait"""
-def cimetiereToField(objJoueur,card):
+def cimetiereToField(objJoueur,card, X ,Y):
 	i=0
 	while objJoueur.cimetiere[i].idCarte != card.idCarte:
 		i=i+1
     
+    objJoueur.cimetiere[i].x = X
+    objJoueur.cimetiere[i].y = Y
 	objJoueur.cartePose.append(objJoueur.cimetiere[i])
 	del objJoueur.cimetiere[i]
 
+#retour un objet carte en fonction des coordonnee x et y
+def recupObjCarteWithCoord(objJoueur,X,Y):
+    myCarte = null
+    for elt in objJoueur.main:
+        if elt.x == X and elt.y == Y
+            myCarte = elt
 
+    for elt in objJoueur.cartePose:
+        if elt.x == X and elt.y == Y
+            myCarte = elt
 
+    return myCarte
+    
+    
 
 

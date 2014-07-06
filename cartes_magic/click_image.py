@@ -59,8 +59,8 @@ def main():
                       break
         for event in pygame.event.get():
             if event.type == QUIT:
-			       pygame.quit()
-			       sys.exit()
+                pygame.quit()
+                sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 ## if mouse is pressed get position of cursor ##
                 pos = pygame.mouse.get_pos()

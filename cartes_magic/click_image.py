@@ -13,11 +13,11 @@ def main():
     XSORT=505
     YSORT=370
     pygame.init()
-    screen = pygame.display.set_mode((1220,920),RESIZABLE)
+    screen = pygame.display.set_mode((1220,914),RESIZABLE)
     pygame.mouse.set_visible(1)
     background = pygame.Surface(screen.get_size())
-    background = background.convert()
-    background=pygame.image.load('fond_plateau(1220x1205).jpg')
+  #  background = background.convert()
+    background=pygame.image.load('fond_plateau2(1220x914).jpg').convert()
     screen.blit(background, (0,0))
     pygame.display.flip()
     cpt=0
@@ -27,7 +27,7 @@ def main():
     tab=[]
     tab1=[]
     #button = pygame.image.load('#016a.jpg').convert_alpha()
-    tab.append(screen.blit(pygame.image.load('main(100x500).jpg').convert_alpha(),(340,640)))#MAIN
+    tab.append(screen.blit(pygame.image.load('main(100x500).jpg').convert_alpha(),(340,810)))#MAIN
     #tab.append(screen.blit(pygame.image.load('creature(800x1000).jpg').convert_alpha(),(XCREATURE,YCREATURE)))#CREATURE
     tab.append(screen.blit(pygame.image.load('terrain(200x500).jpg').convert_alpha(),(XTERRAIN,YTERRAIN)))#TERRAIN
     tab.append(screen.blit(pygame.image.load('sort(200x500).jpg').convert_alpha(),(XSORT,YSORT)))#SORT
@@ -36,7 +36,7 @@ def main():
     tab.append(screen.blit(pygame.image.load('#001.jpg').convert_alpha(),(1010,5)))
     i=0
     for i in range(7):
-        tab1.append(screen.blit(pygame.image.load('#016a.jpg').convert_alpha(),(345+cpt,640)))
+        tab1.append(screen.blit(pygame.image.load('#016a.jpg').convert_alpha(),(345+cpt,815)))
         cpt= cpt + 70
     pygame.display.flip()
     #tab=[a,b,c,d]

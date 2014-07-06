@@ -1,4 +1,4 @@
-import pygame, pygbutton, sys
+import pygame, sys
 from pygame.locals import *
 from pygame.locals import *
 
@@ -13,7 +13,7 @@ def main():
     XSORT=505
     YSORT=370
     pygame.init()
-    screen = pygame.display.set_mode((1220,914),RESIZABLE)
+    screen = pygame.display.set_mode((1300,700),RESIZABLE)
     pygame.mouse.set_visible(1)
     background = pygame.Surface(screen.get_size())
   #  background = background.convert()
@@ -32,7 +32,7 @@ def main():
     tab.append(screen.blit(pygame.image.load('terrain(200x500).jpg').convert_alpha(),(XTERRAIN,YTERRAIN)))#TERRAIN
     tab.append(screen.blit(pygame.image.load('sort(200x500).jpg').convert_alpha(),(XSORT,YSORT)))#SORT
 
-    tab.append(screen.blit(pygame.image.load('#001.jpg').convert_alpha(),(1010,420)))
+    tab.append(screen.blit(pygame.image.load('#001.jpg').convert_alpha(),(1150,460)))
     tab.append(screen.blit(pygame.image.load('#001.jpg').convert_alpha(),(1010,5)))
     i=0
     for i in range(7):

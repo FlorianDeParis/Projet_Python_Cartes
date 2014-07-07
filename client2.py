@@ -4,7 +4,7 @@
 
 import socket, sys
 
-HOST = '25.60.75.61'
+HOST = '10.66.126.86'
 PORT = 50000
 
 # 1) creation du socket :

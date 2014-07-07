@@ -12,7 +12,7 @@ print("Le serveur ecoute a present sur le port {}".format(port))
 serveur_lance = True
 clients_connectes = []
 while serveur_lance:
-    # On va verifier que de nouveaux clients ne demandent pas a se connecter
+    # On va verifier que de nouveaux clients ne demandent pas e se connecter
     # Pour cela, on ecoute la connexion_principale en lecture
     # On attend maximum 50ms
     connexions_demandees, wlist, xlist = select.select([connexion_principale],
@@ -20,13 +20,13 @@ while serveur_lance:
     
     for connexion in connexions_demandees:
         connexion_avec_client, infos_connexion = connexion.accept()
-        # On ajoute le socket connecte a la liste des clients
+        # On ajoute le socket connecte à la liste des clients
         clients_connectes.append(connexion_avec_client)
     
     # Maintenant, on ecoute la liste des clients connectes
     # Les clients renvoyes par select sont ceux devant etre lus (recv)
     # On attend la encore 50ms maximum
-    # On enferme l appel a select.select dans un bloc try
+    # On enferme l appel à select.select dans un bloc try
     # En effet, si la liste de clients connectes est vide, une exception
     # Peut etre levee
     clients_a_lire = []
@@ -38,12 +38,6 @@ while serveur_lance:
     else:
         # On parcourt la liste des clients a lire
         for client in clients_a_lire:
-            msg_a_envoyer = input("> ")
-            # Peut planter si vous tapez des caracteres speciaux
-            msg_a_envoyer = msg_a_envoyer.encode()
-            # On envoie le message
-            connexion_avec_serveur.send(msg_a_envoyer)
-
             # Client est de type socket
             msg_recu = client.recv(1024)
             # Peut planter si le message contient des caracteres speciaux

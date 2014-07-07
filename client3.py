@@ -2,8 +2,8 @@
 # Definition d'un client reseau gerant en parallele l emission
 # et la reception des messages (utilisation de 2 THREADS).
 
-host = '192.168.0.235'
-port = 40000
+host = '10.66.126.86'
+port = 50000
 
 import socket, sys, threading
 

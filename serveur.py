@@ -16,7 +16,7 @@ while serveur_lance:
     # Pour cela, on ecoute la connexion_principale en lecture
     # On attend maximum 50ms
     connexions_demandees, wlist, xlist = select.select([connexion_principale],
-        [], [], 10)
+        [], [], 0.05)
     
     for connexion in connexions_demandees:
         connexion_avec_client, infos_connexion = connexion.accept()
@@ -38,6 +38,12 @@ while serveur_lance:
     else:
         # On parcourt la liste des clients a lire
         for client in clients_a_lire:
+            msg_a_envoyer = input("> ")
+            # Peut planter si vous tapez des caracteres speciaux
+            msg_a_envoyer = msg_a_envoyer.encode()
+            # On envoie le message
+            connexion_avec_serveur.send(msg_a_envoyer)
+
             # Client est de type socket
             msg_recu = client.recv(1024)
             # Peut planter si le message contient des caracteres speciaux

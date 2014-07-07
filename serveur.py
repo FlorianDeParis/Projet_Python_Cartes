@@ -1,7 +1,7 @@
 ﻿import socket
 import select
 
-hote = ''
+hote = '25.60.75.61'
 port = 12800
 
 connexion_principale = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

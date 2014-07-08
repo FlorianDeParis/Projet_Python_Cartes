@@ -1,28 +1,28 @@
 Artefact (8) :
-4 Blindage Crânien
-4 Tambour de sautefeuille 
+4 Blindage Crânien -> 21
+4 Tambour de sautefeuille -> 27 
 Créature-artefact (22) :
-4 Champion gravé
-2 Dévastateur entravarc
-4 Maître de l'étherium
-4 Memnite
-4 Ornithoptère  
-4 Scrige du caveau  
+4 Champion gravé -> 23
+2 Dévastateur entravarc -> 20
+4 Maître de l'étherium -> 17
+4 Memnite -> 25
+4 Ornithoptère -> 29  
+4 Scrige du caveau -> 18 
 Terrain-artefact (16) :
-4 Anciène tannière
-4 Caveau des chuchotements 
-4 Citadelle de sombracier
-4 Siège du Synode  
+4 Anciène tannière -> 28
+4 Caveau des chuchotements -> 32 
+4 Citadelle de sombracier -> 24
+4 Siège du Synode ->  30
 Créature (1) :
-1 Mystique forgepierre  
+1 Mystique forgepierre -> 16  
 Éphémère (1) :
-1 Préceptrice éclairée  
+1 Préceptrice éclairée ->  15
 Terrain (1) :
-1 Nexus des encrimites  
+1 Nexus des encrimites -> 22
 Artefact légendaire (4) :
-4 Mox d'opale  
+4 Mox d'opale -> 26
 Rituel (4) :
-4 Adjuration des pensées  
+4 Adjuration des pensées -> 31  
 Planeswalker (3) :
-3 Tazzeret, agent de Bolas  
+3 Tazzeret, agent de Bolas -> 19
 Total de Cartes du Deck : 60

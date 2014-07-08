@@ -22,7 +22,7 @@ class sort(carte): #declaration class
     # Description: Quand la créature arrive sur le champ de bataille, vous pouvez chercher dans votre bibliothèque jusqu'à trois cartes identiques ...
     # ... les révéler, les mettre dans votre main, puis mélanger votre bibliothèque.
 
-  #def Aptitude_Missionnaire():
+  #def Aptitude_Missionnaire():  FAIT
     # Créature possédant cette aptitude d'origine: Missionnaire Solitaire
     # Quand le Missionnaire solitaire arrive sur le champ de bataille, vous gagnez 4 points de vie.
 

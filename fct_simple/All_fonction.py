@@ -224,3 +224,16 @@ def cimetiere_to_list(card_destination,cimetiere,card):
 	card_destination_cimetiere={'card_destination':cards_destination,'cimetiere':cimetiere}#tableau de hachage contenant le repertoire de destination de la carte et le cimetiere
 	
 	return cards_destination_cimetiere #retour du repertoire de destination la carte et du cimetiere
+
+
+
+#Aptitude_Missionaire quand la carte entre jeu le joueur a +4 pdv
+
+def Aptitude_Missionaire(joueur):
+	
+	joueur.pointDeVie=joueur.pointDeVie+4
+	
+	return (joueur)
+
+
+

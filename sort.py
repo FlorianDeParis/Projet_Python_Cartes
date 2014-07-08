@@ -10,7 +10,7 @@ class sort(carte): #declaration class
                           ,'creature' : 0
                           ,'joueur'   :  0
                           }
-<<<<<<< HEAD
+
   #def Renfort_1():
     # Créature possédant cette aptitude d'origine: Garde Moustique
     # Coût d'exploitation: 1 générique + 1 blanc

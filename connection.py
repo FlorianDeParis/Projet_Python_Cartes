@@ -6,7 +6,7 @@ from sort import*
 
 def create_table(fichier):
 	#fichierDonnees ="./magic_projet.sql"
-	conn =sqlite3.connect('magic_projet.sql') 
+	conn =sqlite3.connect('magic_projet1.sql') 
 	f = open ( fichier , 'r' ) 
 	str = f . read () 
 	cur = con . cursor () 

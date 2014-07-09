@@ -1,5 +1,5 @@
-from creature_carac_modif import*
-from fct_pioche import*
+#from creature_carac_modif import*
+#from fct_pioche import*
 from joueur import*
 from sort import*
 from terrain import*
@@ -119,19 +119,21 @@ def deck_mix_first(deck):
             
     cpt_t=len(deck_inter_terrain)#compteur carte terrain
     cpt_m_s=len(deck_inter_monstre_sort)#compteur carte monstre et sort
-    rep_ct_t=cpt_m_s//cpt_t#calcule de l'alternance avec les carte terrrain
+    #rep_ct_t=cpt_m_s//cpt_t#calcule de l'alternance avec les carte terrrain
     i=0
     
-    while (len(deck_inter_terrain)>0)and(len(deck_inter_monstre_sort)>0):
-        
-        for i in range(rep_ct_t): #deplacement des carte monstre et terrain dans le deck
-           r=random.randint(0,len(deck_inter_monstre_sort)-1)
-           deck_melanger.append(deck_inter_monstre_sort[r])
-           del (deck_inter_monstre_sort[r])
+    #while (len(deck_inter_terrain)>0)and(len(deck_inter_monstre_sort)>0):
+    for val in deck:    
+        for i in range(2): #deplacement des carte monstre et terrain dans le deck
+           if(len(deck_inter_monstre_sort) !=0):
+              r=random.randint(0,len(deck_inter_monstre_sort)-1)
+              deck_melanger.append(deck_inter_monstre_sort[r])
+              del (deck_inter_monstre_sort[r])
 
         #deplacement des cartes terrain dans le deck
-        r=random.randint(0,len(deck_inter_terrain)-1)
-        deck_melanger.append(deck_inter_terrain[r])
+        if(len(deck_inter_terrain))!=0:
+           r=random.randint(0,len(deck_inter_terrain)-1)
+           deck_melanger.append(deck_inter_terrain[r])
 
     return deck_melanger
 

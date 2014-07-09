@@ -16,4 +16,8 @@ class joueur: #declaration class
                             ,'noir'  :  0
                             ,'bleu'  :  0
                             ,'vert'  :  0}
+<<<<<<< HEAD
         #ce tableau va permettre de referancer les mana selectionner lors d un tour du joueur il sera remplit et vider a la voler,a chaque selection de mana par le joueur, ainsi qu a chaque fois que les mana seront conssommer par une invocation du joueur, et a chaque changement de tour.
+=======
+        #ce tableau va permettre de referancer les mana selectionner lors d'un tour du joueur il sera remplit et vider a la voler,a chaque selection de mana par le joueur, ainsi qu'a chaque fois que les mana seront conssommer par une invocation du joueur, et a chaque changement de tour.
+>>>>>>> 9ec9beff9324985b929ff8cecaac2932ed010075

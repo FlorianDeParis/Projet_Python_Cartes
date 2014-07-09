@@ -3,7 +3,7 @@
 # et la reception des messages (utilisation de 2 THREADS).
 
 host = '10.66.126.86'
-port = 50000
+port = 40000
 
 import socket, sys, threading
 

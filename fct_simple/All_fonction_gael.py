@@ -222,7 +222,60 @@ def recupObjCarteWithCoord(objJoueur,X,Y):
             myCarte = elt
 
     return myCarte
-    
-    
 
+#test si le joueur a suffisement de mana pour joueur la carte
+def checkManaForPlay(objJoueur, objCarte):
+    pouvoir = TRUE
+    if objCarte.coutInvocation['blanc'] > 0:
+        if  objJoueur.pointMana['blanc'] < objCarte.coutInvocation['blanc']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['rouge'] > 0:
+        if  objJoueur.pointMana['rouge'] < objCarte.coutInvocation['rouge']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['noir'] > 0:
+        if  objJoueur.pointMana['noir'] < objCarte.coutInvocation['noir']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['bleu'] > 0:
+        if  objJoueur.pointMana['bleu'] < objCarte.coutInvocation['bleu']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['vert'] > 0:
+        if  objJoueur.pointMana['vert'] < objCarte.coutInvocation['vert']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['incolore'] > 0:
+        somme = objJoueur.pointMana['blanc'] + objJoueur.pointMana['rouge'] + objJoueur.pointMana['noir'] + objJoueur.pointMana['bleu'] + objJoueur.pointMana['vert']
 
+        if somme < objCarte.coutInvocation['incolore']:
+             pouvoir = FALSE
+    return pouvoir
+
+#fonction qui test si un terrain a ete pose ou non pendant ce tour
+# recoit un objet joueur
+def checkLandField(objJoueur):
+    if objJoueur.terrainPoserTour == 0:
+        return false
+    else:
+        return true
+
+#fonction qui test si une carte est engage ou non
+# recoit un objet carte
+def checkCardEngaged(objCard):
+    engaged = false
+    for joueur in listeJoueur:
+        if objCard in joueur.carteEngage:
+            engaged = true
+    return engaged
+
+#fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
+#prendre en compte la celerite des creatures
+def checkinvocatiuon(objCreature):
+    if objCreature.mal_invocation == 0 or "celerite" in objCreature.caracteristique:
+        return true
+    else:
+        return false
+
+#fonction qui parcour en debut de tour les creature du joueur sur le plateau et enleve le mal d invocation a ceux qui lon
+def setInvocation():
+    for joueur in listeJoueur:
+        for creature in joueur.cartePose:
+            if creature.mal_invocation == 1:
+                creature.mal_invocation = 0

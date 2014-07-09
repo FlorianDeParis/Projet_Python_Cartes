@@ -79,22 +79,6 @@ def main():
 
 # carte_pose -> carte engage (attention la ce n'est pas un deplacement mais une copie)
 
-#fonction qui test si un terrain a ete pose ou non pendant ce tour
-    # recoit un objet joueur
-    def checkLandField(objJoueur):
-        if objJoueur.terrainPoserTour == 0:
-            return false
-        else:
-            return true
-
-#fonction qui test si une carte est engage ou non
-    # recoit un objet carte
-    def checkCardEngaged(objCard):
-        engaged = false
-        for joueur in listeJoueur:
-            if objCard in joueur.carteEngage:
-                engaged = true
-        return engaged
 """faite"""
 #fonction pour melanger le deck de façon organisee pour le premier tour FAITE
 
@@ -108,20 +92,6 @@ def main():
 #fonction pour modifier la vie et les degats d'un monstre FAITE
 
 
-#fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
-    #prendre en compte la celerite des creatures
-    def checkinvocatiuon(objCreature):
-        if objCreature.mal_invocation == 0 or "celerite" in objCreature.caracteristique:
-            return true
-        else:
-            return false
-
-#fonction qui parcour en debut de tour les creature du joueur sur le plateau et enleve le mal d invocation a ceux qui lon
-    def setInvocation():
-        for joueur in listeJoueur:
-            for creature in joueur.cartePose:
-                if creature.mal_invocation == 1:
-                    creature.mal_invocation = 0
 
 
 

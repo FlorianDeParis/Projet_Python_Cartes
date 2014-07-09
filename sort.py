@@ -75,9 +75,11 @@ class sort(carte): #declaration class
     #~ # A chaque fois qu'une creature qu'un adversaire controle est mise dans un cimetiere depuis ...
     #~ # ... le champs de bataille, ce joueur perd 2 points de vie. 
 
+
   #~ def Destruction():
     #~ # Conditions: (fleche retournee?)
     #~ # Description: Detruisez la creature ciblee. Elle ne peut pas etre regeneree.
+
   
 #~ # ce tableau va permettre de savoir ce que peut cibler le sortilege, et donc de limiter dans le graphisme les debordements
 #~ # il y aura un switch case pour attribuer un id

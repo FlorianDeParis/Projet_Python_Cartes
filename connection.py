@@ -4,10 +4,13 @@ from creature import*
 from terrain import*
 from sort import*
 
-def create_table():
+def create_table(fichier):
 	#fichierDonnees ="./magic_projet.sql"
-	#conn =sqlite3.connect('magic_projet1.sql') 
-	#cur =conn.cursor()
+	conn =sqlite3.connect('magic_projet.sql') 
+	f = open ( fichier , 'r' ) 
+	str = f . read () 
+	cur = con . cursor () 
+	cur . execute ( str )
 	#~ cur.execute(''' CREATE TABLE COUT_INVOQUE
 	   #~ (
 	   #~ ID_CARTE SMALLINT NOT NULL ,
@@ -68,9 +71,10 @@ def create_table():
 	#cur.execute('''CREATE  INDEX I_FK_LIER_CARTE      ON LIER (ID_CARTE ASC)''')    
 	#cur.execute('''CREATE  INDEX I_FK_APPARTIEN_PERSO      ON APPARTIEN (ID_PERSO ASC) ''')
 	#cur.execute('''CREATE  INDEX I_FK_APPARTIEN_DECK    ON APPARTIEN (ID_DECK ASC) ''')
-	#conn.commit()
-	#cur.close() 
+	conn.commit()
+	cur.close() 
 	conn.close() 
+
 def select_all_carte():
 	allcarte = []
 	fichierDonnees ="./magic_projet.sql"
@@ -92,28 +96,17 @@ def select_all_carte():
 	cur.close() 
 	conn.close() 
 	return allcarte
-
-def insert(insert):
-#		purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),('2006-04-06', 'SELL', 'IBM', 500, 53.00),]
-#c.executemany('INSERT INTO' table 'VALUES (?,?,?,?,?)', purchases)
-	fichierDonnees ="./magic_projet.sql"
+def select_all_carte_type(couleurDeck):
+	allcarte = []
+	'''fichierDonnees ="./magic_projet.sql"
 	conn =sqlite3.connect('magic_projet1.sql') 
 	cur =conn.cursor()
-	cur.executemany(insert)
-	conn.commit()
-	cur.close() 
-	conn.close() 
-	
-print(select_all_carte())
-def findCarte(carte):
-	
-#		purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),('2006-04-06', 'SELL', 'IBM', 500, 53.00),]
-#c.executemany('INSERT INTO' table 'VALUES (?,?,?,?,?)', purchases)
-	idcarte= carte.idCarte
-	fichierDonnees ="./magic_projet.sql"
-	conn =sqlite3.connect('magic_projet1.sql') 
-	cur =conn.cursor()
-	for row in cur.execute('SELECT NOM_CARTE,ID_CARTE, URL_IMAGE,COULEUR_CARTE,TYPE,ATTACK,DEFENSE,FONCTION_LIEE FROM carte WHERE ID_CARTE ='idcarte):
+	i=0
+	#def __init__(self, nomCarte, idCarte, url_img, couleurCarte)
+	#  ID_CARTE SMALLINT NOT NULL ,    NOM_CARTE CHAR(32)  ,TYPE SMALLINT  ,   URL_IMAGE VARCHAR(128)  ,  
+#	COULEUR_CARTE VARCHAR(128)  ,    ATTACK SMALLINT  ,    DEFENSE SMALLINT  ,    FONCTION_LIEE CHAR(32)  
+	for row in cur.execute('SELECT NOM_CARTE,ID_CARTE, URL_IMAGE,COULEUR_CARTE,TYPE,ATTACK,DEFENSE,FONCTION_LIEE FROM carte '):
+		print(row)
 		if (row[4]==1) :
 			allcarte.append(terrain(row[0],row[1],row[2],row[3],row[6])) #recuperer le mana a la place de row[6]
 		elif (row[4]==2) :#carte type monstre et sort (provisoir en attente de la methode d'identification des 
@@ -121,8 +114,63 @@ def findCarte(carte):
 		elif (row[4]==3):
 			allcarte.append(sort(row[0],row[1],row[2],row[3],row[6]))#recuperer la caracteristique a la place de row[6]
 		i=i+1
+	cur.close() 
+	conn.close()'''
+	maCarte0 = carte("cauchemard", 10, "#016a.jpg","rouge")
+	maCarte1 = carte("cauchemard", 10, "#017a.jpg","rouge")
+	maCarte2 = carte("cauchemard", 10, "#018a.jpg","rouge")
+	maCarte3 = carte("cauchemard", 10, "#017a.jpg","rouge")
+	maCarte4 = carte("cauchemard", 10, "#017a.jpg","rouge")
+	maCarte5 = carte("cauchemard", 10, "#017a.jpg","rouge")
+	maCarte6 = carte("cauchemard", 10, "#017a.jpg","rouge")
+	maCarte7 = carte("cauchemard", 10, "#017a.jpg","rouge")
+	allcarte =[maCarte0,maCarte1,maCarte2,maCarte3] 
+	return allcarte
+
+def insert(insert):
+#		purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),('2006-04-06', 'SELL', 'IBM', 500, 53.00),]
+#c.executemany('INSERT INTO' table 'VALUES (?,?,?,?,?)', purchases)
+	fichierDonnees ="./magic_projet.sql"
+	conn =sqlite3.connect('magic_projet1.sql') 
+	cur =conn.cursor()
+	cur.execute(insert)
 	conn.commit()
 	cur.close() 
 	conn.close() 
 	
-print(select_all_carte())
+#print(select_all_carte())
+def selectUser():
+	perso=[]
+	fichierDonnees ="./magic_projet.sql"
+	conn =sqlite3.connect('magic_projet1.sql') 
+	cur =conn.cursor()
+	row=cur.execute('SELECT ID_PERSO, PSEUDO, XP FROM PERSO')
+	
+	for ligne in row:
+		perso.append(ligne)
+		#perso.append('Perso:'+ligne[1]+'\nXP:'+str(ligne[2]))	# a ameliorer car prend tt les persos dans la BDD
+	
+	
+	conn.commit()
+	cur.close() 
+	conn.close() 
+	return(perso)
+
+def saveUser(joueur):
+	fichierDonnees ="./magic_projet.sql"
+	conn =sqlite3.connect('magic_projet1.sql') 
+	cur =conn.cursor()
+	row=cur.execute('SELECT ID_PERSO FROM PERSO WHERE PSEUDO='(joueur.nom))
+	if row[0] == []:
+		row=cur.execute('SELECT max(ID_PERSO) FROM PERSO ')
+		ids = row[0] +1
+	else:
+		ids = row[0]
+	cur.executemany('INSERT INTO PERSO VALUES '(ids,joueur.nom,joueur.xp))
+	conn.commit()
+	cur.close() 
+	conn.close() 
+
+#insert("INSERT INTO PERSO (ID_PERSO,PSEUDO,XP ) VALUES (3,'floto',1000)")
+#print(selectUser())
+#print(selectUser()[0])

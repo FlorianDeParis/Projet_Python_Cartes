@@ -37,9 +37,9 @@ def ecurage_de_pensee(deck,cimetiere):
 	deck_cimetiere={'deck':deck,'cimetiere':cimetiere}#tableau de hachage contenant le deck et le cimetiere
 	return deck_cimetiere#retour du deck et du cimetiere
 	
-#~ all = ecurage_de_pensee([1,2,3,4,5,6],[])
-#~ print(all['deck'])
-#~ print(all['cimetiere'])
+# all = ecurage_de_pensee([1,2,3,4,5,6],[])
+# print(all['deck'])
+# print(all['cimetiere'])
 
 
 #fonction pour check si le joueur est en vie

@@ -4,8 +4,13 @@
 
 import socket, sys, pickle
 
+<<<<<<< HEAD
 HOST = '192.168.0.15'
 PORT = 40000
+=======
+HOST = '192.168.0.14'
+PORT = 48000
+>>>>>>> 1d726b0005e2ea92560343f2b8ce97c66cb36120
 
 # 1) creation du socket :
 mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,11 +29,18 @@ msgServeur = mySocket.recv(1024)
 while 1:
     if msgServeur.upper() == "FIN" or msgServeur =="":
         break
-    print "S>", pickle.loads(msgServeur)
+    try:
+        newObj = pickle.loads(msgServeur)
+        print "A>", newObj.pointMana
+    except:       
+        print "S>", msgServeur
+
     msgClient = raw_input("C> ")
     mySocket.send(msgClient)
     msgServeur = mySocket.recv(1024)
-
+    newObj = pickle.loads(msgServeur)
+    print "Z>", newObj.pointMana
+    
 # 4) Fermeture de la connexion :
 print "Connexion interrompue."
 mySocket.close()

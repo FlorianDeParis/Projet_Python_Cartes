@@ -266,5 +266,5 @@ def saveUser(joueur):
 #print(selectUser()[0])
 
 #create_table('./SQL/magic_carte1.sql')
-#insertinbdd()
-#print select_all_carte()
+insertinbdd()
+print select_all_carte()

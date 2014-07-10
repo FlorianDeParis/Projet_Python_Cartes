@@ -78,38 +78,45 @@ def search_and_move(objJoueur,card,position):
 
 #melange orgainse du deck pour le debut de partie
 
-def deck_mix_first(objJoueur):
+#melange orgainse du deck pour le debut de partie
+
+def deck_mix_first(deck):
+	
     deck_inter_monstre_sort=[]#deck intermediaire pour stocker les cartes monstre et sort
     deck_inter_terrain=[]#deck intermediaire pour stocker les cartes terrain
     deck_melanger=[]
     r=0
     i=0
-    cpt=len(objJoueur.bibliotheque)#compteur de cartes dans le deck
+    cpt=len(deck)#compteur de cartes dans le deck
     
     for i in range(cpt):
-        if (type(objJoueur.bibliotheque[i]) is creature) or (type(objJoueur.bibliotheque[i])is sort) :#carte type monstre et sort (provisoir en attente de la methode d'identification des
-            deck_inter_monstre_sort.append(objJoueur.bibliotheque[i])#deplacement de la carte
-        elif type(objJoueur.bibliotheque[i]) is terrain :#carte de type terrain
-            deck_inter_terrain.append(objJoueur.bibliotheque[i])
+
+        if (type(deck[i]) is creature) or (type(deck[i])is sort) :#carte type monstre et sort (provisoir en attente de la methode d'identification des 
+            deck_inter_monstre_sort.append(deck[i])#deplacement de la carte
+        elif type(deck[i]) is terrain :#carte de type terrain
+            deck_inter_terrain.append(deck[i])
             
     cpt_t=len(deck_inter_terrain)#compteur carte terrain
     cpt_m_s=len(deck_inter_monstre_sort)#compteur carte monstre et sort
-    rep_ct_t=cpt_m_s//cpt_t#calcule de l'alternance avec les carte terrrain
+    #rep_ct_t=cpt_m_s//cpt_t#calcule de l'alternance avec les carte terrrain
     i=0
     
-    while (len(deck_inter_terrain)>0)and(len(deck_inter_monstre_sort)>0):
-        for i in range(rep_ct_t): #deplacement des carte monstre et terrain dans le deck
-           r=random.randint(0,len(deck_inter_monstre_sort)-1)
-           deck_melanger.append(deck_inter_monstre_sort[r])
-           del deck_inter_monstre_sort[r]
+    #while (len(deck_inter_terrain)>0)and(len(deck_inter_monstre_sort)>0):
+    for val in deck:    
+        for i in range(2): #deplacement des carte monstre et terrain dans le deck
+           if(len(deck_inter_monstre_sort) !=0):
+              r=random.randint(0,len(deck_inter_monstre_sort)-1)
+              deck_melanger.append(deck_inter_monstre_sort[r])
+              del (deck_inter_monstre_sort[r])
 
         #deplacement des cartes terrain dans le deck
-        r=random.randint(0,len(deck_inter_terrain)-1)
-        deck_melanger.append(deck_inter_terrain[r])
+        if(len(deck_inter_terrain))!=0:
+           r=random.randint(0,len(deck_inter_terrain)-1)
+           deck_melanger.append(deck_inter_terrain[r])
 
-    objJoueur.bibliotheque = deck_melanger
+    return deck_melanger
 
-#print(deck_mix_first(deck=[1,2,3,1,2,3,1,2,3,1,2,3]))#test fctionnemnt deck_mix_first
+
 
 """fait"""
 #pioche des cartes dans le deck
@@ -258,7 +265,7 @@ def checkLandField(objJoueur):
 
 #fonction qui test si une carte est engage ou non
 # recoit un objet carte
-def checkCardEngaged(objCard):
+def checkCardEngaged(listeJoueur,objCard):
     engaged = false
     for joueur in listeJoueur:
         if objCard in joueur.carteEngage:

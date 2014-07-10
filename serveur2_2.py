@@ -6,7 +6,11 @@ from joueur import *
 monJoueur = joueur(35,'florian',10,0)
 
 HOST = ''
+<<<<<<< HEAD
+PORT = 48000
+=======
 PORT = 40000
+>>>>>>> 1d726b0005e2ea92560343f2b8ce97c66cb36120
 
 # 1) creation du socket :
 mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

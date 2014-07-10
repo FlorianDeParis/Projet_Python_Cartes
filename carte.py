@@ -3,8 +3,10 @@ class carte: #declaration class
     # !!! en revanche dans le cas ou l on veut proposer des deck tout fait on se basera sur une table en plus dans la base
 
     def __init__(self, nomCarte, idCarte, url_img, couleurCarte):#constructeur
+        CPTUNIQUECARTE += 1
         self.nomCarte = nomCarte
-        self.idCarte = idCarte
+        self.idCarte = CPTUNIQUECARTE #id strictement unique pour chaque objet carte
+        self.idCarteBase = idCarte #id reference de la carte dans la bdd
         self.url_img = url_img
         self.couleurCarte = couleurCarte
         self.x = 0
@@ -15,5 +17,6 @@ class carte: #declaration class
                                 ,'bleu'      :  0
                                 ,'vert'      :  0
                                 ,'incolore'  :  0}
+
 # ce tableau represente les cout d invocation de chaque carte. Il sera compare au tableau  pointMana  du joueur pour voir si le joueur a payer suffisement de mana pour l invocation. On traiterai l incolore en dernier car il s agit de payer avec n importe qu elle couleur de notre choix
 #maCarte = carte("cauchemard", 10, "ecureuil", "rouge")

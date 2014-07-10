@@ -5,6 +5,8 @@ from carte import *
 from joueur import *
 from connection import *
 from All_fonction import *
+import socket, sys, pickle
+from joueur import *
 XMAIN=260
 YMAIN=640
 XMAINAD=260
@@ -33,6 +35,15 @@ TABJOUEUR=[]
 TABJOUEUR.append('')
 TABJOUEUR.append('')
 CONNECT=''
+CPTUNIQUECARTE=0
+
+######connexion
+
+
+
+HOST = ''
+PORT = 40000
+
 ################################### change position carte adverse ##########################################
 def changePositionAD(background,joueurAD):
 	for cartePose in joueurAD.cartePose:
@@ -49,7 +60,15 @@ def changePositionAD(background,joueurAD):
 			cartePose.rec = background.blit(pygame.image.load(cartePose.url_img).convert_alpha(),(cartePose.x,cartePose.x))
 
 ################################ fin change position carte adverse ##########################################"
-
+################################ blit all element##########################################"
+def refrechelementPose(background,array)
+	i=o
+	for i in array:
+		carte.rec=background.blit(pygame.image.load(i.url_img).convert_alpha(),(i.x,i.y))
+#################################" donne les coordonnees au carte ###############################
+################################ blit carte	 ##########################################"
+def blitCarte(background,carte):
+	carte.rec=background.blit(pygame.image.load(carte.url_img).convert_alpha(),(carte.x,carte.y))
 #################################" donne les coordonnees au carte #########################################""
 def takePosition(background,carte,posx,posy):
 	carte.x=posx
@@ -133,10 +152,10 @@ def initAffichage(joueur):
 	textpos = text.get_rect()
 	background.blit(text,(XPIOCHEJOUEUR+90, YPIOCHEJOUEUR+30))
     
-	button1.draw(background)
-	button.draw(background)
-	button2.draw(background)
-	button3.draw(background)
+	button1.draw(background)#####DECK
+	button.draw(background)#####CIMET
+	button2.draw(background)####FIN
+	button3.draw(background)#####PHASE SUIVANTE
 	if joueur[0].main!=[]:
 		for arraymain in joueur[0].main:
 			background.blit(pygame.image.load(arraymain.url_img).convert(),(arraymain.x,arraymain.y))
@@ -870,29 +889,183 @@ def main():
     ## does button need to be 'pygame.sprite.Sprite for this? ##
     ## I use 'get_rect() ##
     tab.append(background.blit(pygame.image.load('main(100x500).jpg').convert_alpha(),(XMAIN,YMAIN)))#MAIN
-    tab.append(background.blit(pygame.image.load('fond_gris2(80x1000).jpg').convert_alpha(),(XCREATURE,YCREATURE)))#SORT tab[0]
-    tab.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XTERRAIN,YTERRAIN)))#TERRAIN tab[1]
-    tab.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XSORT,YSORT)))#CREATURE tab[2]
-    #tab.append(background.blit(pygame.image.load('#001.jpg').convert(),(XPIOCHEJOUEUR,YPIOCHEJOUEUR)))# pioche joueur tab[3]
-    #tab.append(background.blit(pygame.image.load('#001.jpg').convert_alpha(),(XPIOCHEADVERSE,YPIOCHEADVERSE)))# pioche adverse tab[4]
+    tab.append(background.blit(pygame.image.load('fond_gris2(80x1000).jpg').convert_alpha(),(XCREATURE,YCREATURE)))#Terrain tab[1]
+    tab.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XTERRAIN,YTERRAIN)))#creature tab[2]
+    tab.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XSORT,YSORT)))#sort tab[3]
+    #tab.append(background.blit(pygame.image.load('#001.jpg').convert(),(XPIOCHEJOUEUR,YPIOCHEJOUEUR)))# pioche joueur tab[4]
+    #tab.append(background.blit(pygame.image.load('#001.jpg').convert_alpha(),(XPIOCHEADVERSE,YPIOCHEADVERSE)))# pioche adverse tab[5]
     
 
     #partie adverse
-    tab1.append(background.blit(pygame.image.load('fond_gris2(80x1000).jpg').convert_alpha(),(XCREATURE,YCREATURE)))#CREATURE
-    tab1.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XTERRAIN,YTERRAIN)))#TERRAIN
-    tab1.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XSORT,YSORT)))#SORT
+    tab1.append(background.blit(pygame.image.load('fond_gris2(80x1000).jpg').convert_alpha(),(XCREATURE,YCREATURE)))#TERRAIN tab[0]
+    tab1.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XTERRAIN,YTERRAIN)))#CREATURE tab[1]
+    tab1.append(background.blit(pygame.image.load('creature(145x500).jpg').convert_alpha(),(XSORT,YSORT)))#SORT tab[2]
     cpt1=0
     ################## avant la boucle placer les 7 ou 6 cartes dans la main de vos joueur########
 	##TABJOUEUR[0] est le joueur du pc
 	## TABJOUEUR[1] est l adversaire a charger
-
+    cptTour=0
+	newCombat = combat()
  ######################################"plateau jeu##################################################
     while 1:
+		if cptTour==0:
+			posy=YMAIN
+			for cptTemp in range(7)
+				pioche(TABJOUEUR[0],1,arrayJoMain[cptTemp][0],arrayJoMain[cptTemp][1])
+				
+            
+         ################## nouveau tour####################
+
+################## pose carte ####################
+		poseCarte=0
+		while poseCarte==0:
+			for event in pygame.event.get():
+		        if event.type == QUIT:
+					   pygame.quit()
+					   sys.exit()
+				if event.type == pygame.MOUSEBUTTONDOWN:
+                
+                pos = pygame.mouse.get_pos()
+                
+                ## check if cursor is on button ##
+                for carte in tab:##### parcourt tt les terrain
+                  if carte.collidepoint(pos) == tab[0]:#### main
+					for cartemain in TABJOUEUR[0].main
+						if cartemain.collidepoint(pos)
+							if type(cartemain) is terrain: #### si carte est un terrain
+								TABJOUEUR[0].cartePose.append(cartemain)
+							else:
+								if checkManaForPlay(TABJOUEUR[0],cartemain):
+									TABJOUEUR[0].cartePose.append(cartemain)
+				  if carte.collidepoint(pos) == tab[1]:###### si on a clické sur la partie terrain 
+					for cartepose in TABJOUEUR[0].cartePose
+						if type(cartepose) is terrain: #### test cest un terrain
+							if cartepose.url_img[0]=='a':
+								desengagedMana(TABJOUEUR[0], cartepose)
+							else 
+								engagedMana(TABJOUEUR[0], cartepose)
+					#####placé sur le terrain####
+                    print(tab.index(carte))
+                    print('je passe')
+				if 'click' in button3.handleEvent(event) : ##########phase suivante
+                	print('ok')
+					poseCarte=1
+################## fin pose carte ####################
+
+################## debut engagement ####################
+		engagementCarte=0
+		carteTempsEngage=[]
+		carteTempsEngageCreature=[]
+		while engagementCarte==0:
+			for event in pygame.event.get():
+		        if event.type == QUIT:
+					   pygame.quit()
+					   sys.exit()
+				if event.type == pygame.MOUSEBUTTONDOWN:
+					if carte.collidepoint(pos) == tab[1]:###### si on a clické sur la partie terrain 
+						for cartepose in TABJOUEUR[0].cartePose
+							if type(cartepose) is terrain: #### test cest un terrain
+								if checkDesengagedField(TABJOUEUR[0], cartepose):
+									desengagedMana(TABJOUEUR[0], cartepose)
+								if !checkCardEngaged(TABJOUEUR[0], cartepose):
+									engagedMana(TABJOUEUR[0], cartepose)
+					if carte.collidepoint(pos) == tab[2]:###### si on a clické sur la creature tab[2]
+						for cartepose in TABJOUEUR[0].cartePose
+							if type(cartepose) is creature: #### test cest un creature
+								if !checkCardEngaged(TABJOUEUR[0], cartepose):
+									if checkManaForPlay(TABJOUEUR[0], cartepose):
+										engagedAllCarte(TABJOUEUR[0], cartepose) #### engage carte
+										carteTempsEngageCreature.append(cartepose) #### ajout dans tableau temp engage carte creature
+							if cartepose in carteTempsEngageCreature:
+								desengagedAllCarte(TABJOUEUR[0], cartepose) #### desengage carte creature
+								del carteTempsEngageCreature[carteTempsEngag.index(cartepose)]
+
+					if carte.collidepoint(pos) == tab[3]:###### si on a clicke sur  sort tab[3]
+						for cartepose in TABJOUEUR[0].cartePose
+							if type(cartepose) is sort: #### test cest un sort
+								if !checkCardEngaged(TABJOUEUR[0], cartepose):
+									if checkManaForPlay(TABJOUEUR[0], cartepose):
+										engagedAllCarte(TABJOUEUR[0], cartepose) #### engage carte sort
+										carteTempsEngage.append(cartepose)### temp sort ajout sort
+										flagCible =0
+										while flagCible ==0: ########### attend la cible
+											for event in pygame.event.get():
+												if event.type == QUIT:
+													   pygame.quit()
+													   sys.exit()
+												if event.type == pygame.MOUSEBUTTONDOWN:
+													if carte.collidepoint(pos) == tab1[0]:#TERRAIN tab1[0] adverse
+														for cartepose1 in TABJOUEUR[1].cartePose
+															if testCible(cartepose,type(cartepose1)):
+																flagCible =1
+													if carte.collidepoint(pos) == tab1[1]:#CREATURE tab[1]
+														for cartepose1 in TABJOUEUR[1].cartePose
+															if testCible(cartepose,type(cartepose1)):
+																flagCible =1
+													if carte.collidepoint(pos) == tab1[2]:#CREATURE tab[2]
+														for cartepose1 in TABJOUEUR[2].cartePose
+															if testCible(cartepose,type(cartepose1)):
+																flagCible =1
+					if carte.collidepoint(pos) == tab[1]:###### si on a clicke sur la partie terrain 
+							if cartepose in carteTempsEngage:
+								desengagedAllCarte(TABJOUEUR[0], cartepose) #### desengage carte sort
+								del carteTempsEngage[carteTempsEngag.index(cartepose)]
+			
+	            	if 'click' in button3.handleEvent(event) : ##########phase suivante
+			        	engagementCarte=1
+			pos = pygame.mouse.get_pos()
+
+################## fin engagement ####################
+
+##################debut attack creature ####################
+		selectionCreature =0
+		carteTempsEngage=[]
+		while selectionCreature ==0:
+			for event in pygame.event.get():
+		        if event.type == QUIT:
+					   pygame.quit()
+					   sys.exit()
+				if event.type == pygame.MOUSEBUTTONDOWN:
+					
+
+
+                if 'click' in button3.handleEvent(event) : ##########phase suivante
+			        	selectionCreature =1
+                pos = pygame.mouse.get_pos()
+			##### juste kil attaque ####
+			##### rempli le tableau temporaire####
+		newCombat.arrayCreatureAttack=arrayCreature
+
+
+##################fin attack creature ####################
+
+################## attack sort ####################
+		selectionSort=0
+		while selectionSort==0:
+			for event in pygame.event.get():
+		        if event.type == QUIT:
+					   pygame.quit()
+					   sys.exit()
+				if event.type == pygame.MOUSEBUTTONDOWN:
+                if 'click' in button3.handleEvent(event) : ##########phase suivante
+			        	selectionSort =1
+                pos = pygame.mouse.get_pos()
+			##### indique la cible######
+			##### array (sort,type,cible)   
+            #tab1.append(background.blit(pygame.image.load('#016a.jpg').convert_alpha(),(XSORT+cpt,YSORT)))
+         newCombat.arrayAction######action##############"
+		 newCombat.addArrayInList  
+################## fin attack sort ####################
+		
 		######### utilise des flag pour identifier les phases
 		######### charger l adversaire#########################
 		######### deangager les carte
         ######### piocher un carte et la placer dans la main du joueur s'il y en a plus de 7 enlever une#####
         ###even mouse IN
+
+
+		################## fin phase de combat#####################################################
+		#######visuel##################
         pos = pygame.mouse.get_pos()
         for carte in tab:
             if carte.collidepoint(pos):
@@ -901,18 +1074,17 @@ def main():
               if tab.index(carte)== 0 and Arrayjoueur[0].main!=[]:
                  for carte1 in Arrayjoueur[0].main:
                    if carte1.rec.collidepoint(pos) :
-                      urlGrand= carte1.url_img[0:-5]+".jpg"
-                      print(urlGrand)
+                      urlGrand= carte1.url_img
+                      
                       screen.blit(pygame.image.load(urlGrand).convert_alpha(),(XVISUELJO,YVISUELJO))
-                      #print('carte')
-                      #print(tab1.index(carte1))
+                      
                       break
                    else:
                       screen.blit(pygame.image.load('#001.jpg').convert(),(XVISUELJO,YVISUELJO))
               elif tab.index(carte)!= 0 and Arrayjoueur[0].cartePose!=[]:
                  for carte1 in Arrayjoueur[0].cartePose:
                    if carte1.rec.collidepoint(pos) :
-                      urlGrand= carte1.url_img[0:-5]+".jpg"
+                      urlGrand= carte1.url_img
                       print(urlGrand)
                       screen.blit(pygame.image.load(urlGrand).convert_alpha(),(XVISUELJO,YVISUELJO))
                       #print('carte')
@@ -922,17 +1094,19 @@ def main():
                       screen.blit(pygame.image.load('#001.jpg').convert(),(XVISUELJO,YVISUELJO))
               else:
                    screen.blit(pygame.image.load('#001.jpg').convert(),(XVISUELJO,YVISUELJO))
+		
         for field in tab1:
             if field.collidepoint(pos):
               if tab.index(carte)== 0 and Arrayjoueur[1].cartePose!=[]:
                  for carteAD in Arrayjoueur[1].main:
                    if carteAD.rec.collidepoint(pos) :
-                      urlGrand= carteAD.url_img[0:-5]+".jpg"
+                      urlGrand= carteAD.url_img
                       screen.blit(pygame.image.load(urlGrand).convert_alpha(),(XVISUELJO,YVISUELJO))
                       break
                    else:
                       screen.blit(pygame.image.load('#001.jpg').convert(),(XVISUELAD,YVISUELAD))
 
+		###########fin visuel###################"	
 
               #fin mouse IN
               #else:
@@ -958,14 +1132,10 @@ def main():
 					####### si on l active ou desactive on change l'urlImg avec 'a' ou 'b' a la fin
 
             if 'click' in button1.handleEvent(event) and Arrayjoueur[0].bibliotheque != [] :###### deck
-                posx=XMAIN +cpt1
-                posy=YMAIN
-                Arrayjoueur[0].main.append(Arrayjoueur[0].bibliotheque[0])
-                takePosition(background,Arrayjoueur[0].main[-1],posx,posy)
-                del(Arrayjoueur[0].bibliotheque[0]) 
-                #tab1.append(background.blit(pygame.image.load('#016a.jpg').convert_alpha(),(XSORT+cpt,YSORT)))
-                cpt1= cpt1 + 70
+               
             if 'click' in button2.handleEvent(event) :######fin
+				##### appelle le tableau du joueur adverse#######
+				####### redessine le terrain ########
                 changePositionAD(background,Arrayjoueur[1])
 
             if 'click' in button3.handleEvent(event) : ##########phase suivante
@@ -973,7 +1143,7 @@ def main():
             #if 'click' in button1.handleEvent(event):
                 #break
 
-        screen.blit(initAffichage(Arrayjoueur), (0, 0))
+        screen.blit(initAffichage(TABJOUEUR), (0, 0))
         pygame.display.flip()
         pygame.time.Clock().tick(30)
 if __name__ == '__main__': main()

@@ -78,38 +78,45 @@ def search_and_move(objJoueur,card,position):
 
 #melange orgainse du deck pour le debut de partie
 
-def deck_mix_first(objJoueur):
+#melange orgainse du deck pour le debut de partie
+
+def deck_mix_first(deck):
+	
     deck_inter_monstre_sort=[]#deck intermediaire pour stocker les cartes monstre et sort
     deck_inter_terrain=[]#deck intermediaire pour stocker les cartes terrain
     deck_melanger=[]
     r=0
     i=0
-    cpt=len(objJoueur.bibliotheque)#compteur de cartes dans le deck
+    cpt=len(deck)#compteur de cartes dans le deck
     
     for i in range(cpt):
-        if (type(objJoueur.bibliotheque[i]) is creature) or (type(objJoueur.bibliotheque[i])is sort) :#carte type monstre et sort (provisoir en attente de la methode d'identification des
-            deck_inter_monstre_sort.append(objJoueur.bibliotheque[i])#deplacement de la carte
-        elif type(objJoueur.bibliotheque[i]) is terrain :#carte de type terrain
-            deck_inter_terrain.append(objJoueur.bibliotheque[i])
+
+        if (type(deck[i]) is creature) or (type(deck[i])is sort) :#carte type monstre et sort (provisoir en attente de la methode d'identification des 
+            deck_inter_monstre_sort.append(deck[i])#deplacement de la carte
+        elif type(deck[i]) is terrain :#carte de type terrain
+            deck_inter_terrain.append(deck[i])
             
     cpt_t=len(deck_inter_terrain)#compteur carte terrain
     cpt_m_s=len(deck_inter_monstre_sort)#compteur carte monstre et sort
-    rep_ct_t=cpt_m_s//cpt_t#calcule de l'alternance avec les carte terrrain
+    #rep_ct_t=cpt_m_s//cpt_t#calcule de l'alternance avec les carte terrrain
     i=0
     
-    while (len(deck_inter_terrain)>0)and(len(deck_inter_monstre_sort)>0):
-        for i in range(rep_ct_t): #deplacement des carte monstre et terrain dans le deck
-           r=random.randint(0,len(deck_inter_monstre_sort)-1)
-           deck_melanger.append(deck_inter_monstre_sort[r])
-           del deck_inter_monstre_sort[r]
+    #while (len(deck_inter_terrain)>0)and(len(deck_inter_monstre_sort)>0):
+    for val in deck:    
+        for i in range(2): #deplacement des carte monstre et terrain dans le deck
+           if(len(deck_inter_monstre_sort) !=0):
+              r=random.randint(0,len(deck_inter_monstre_sort)-1)
+              deck_melanger.append(deck_inter_monstre_sort[r])
+              del (deck_inter_monstre_sort[r])
 
         #deplacement des cartes terrain dans le deck
-        r=random.randint(0,len(deck_inter_terrain)-1)
-        deck_melanger.append(deck_inter_terrain[r])
+        if(len(deck_inter_terrain))!=0:
+           r=random.randint(0,len(deck_inter_terrain)-1)
+           deck_melanger.append(deck_inter_terrain[r])
 
-    objJoueur.bibliotheque = deck_melanger
+    return deck_melanger
 
-#print(deck_mix_first(deck=[1,2,3,1,2,3,1,2,3,1,2,3]))#test fctionnemnt deck_mix_first
+
 
 """fait"""
 #pioche des cartes dans le deck
@@ -222,7 +229,116 @@ def recupObjCarteWithCoord(objJoueur,X,Y):
             myCarte = elt
 
     return myCarte
-    
-    
 
+#test si le joueur a suffisement de mana pour joueur la carte
+def checkManaForPlay(objJoueur, objCarte):
+    pouvoir = TRUE
+    if objCarte.coutInvocation['blanc'] > 0:
+        if  objJoueur.pointMana['blanc'] < objCarte.coutInvocation['blanc']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['rouge'] > 0:
+        if  objJoueur.pointMana['rouge'] < objCarte.coutInvocation['rouge']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['noir'] > 0:
+        if  objJoueur.pointMana['noir'] < objCarte.coutInvocation['noir']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['bleu'] > 0:
+        if  objJoueur.pointMana['bleu'] < objCarte.coutInvocation['bleu']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['vert'] > 0:
+        if  objJoueur.pointMana['vert'] < objCarte.coutInvocation['vert']
+            pouvoir = FALSE
+    elif objCarte.coutInvocation['incolore'] > 0:
+        somme = objJoueur.pointMana['blanc'] + objJoueur.pointMana['rouge'] + objJoueur.pointMana['noir'] + objJoueur.pointMana['bleu'] + objJoueur.pointMana['vert']
+
+        if somme < objCarte.coutInvocation['incolore']:
+             pouvoir = FALSE
+    return pouvoir
+
+#fonction qui test si un terrain a ete pose ou non pendant ce tour
+# recoit un objet joueur
+def checkLandField(objJoueur):
+    if objJoueur.terrainPoserTour == 0:
+        return false
+    else:
+        return true
+
+#fonction qui test si une carte est engage ou non
+# recoit un objet carte
+def checkCardEngaged(listeJoueur,objCard):
+    engaged = false
+    for joueur in listeJoueur:
+        if objCard in joueur.carteEngage:
+            engaged = true
+    return engaged
+
+#fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
+#prendre en compte la celerite des creatures
+def checkinvocatiuon(objCreature):
+    if objCreature.mal_invocation == 0 or "celerite" in objCreature.caracteristique:
+        return true
+    else:
+        return false
+
+#fonction qui parcour en debut de tour les creature du joueur sur le plateau et enleve le mal d invocation a ceux qui lon
+def setInvocation():
+    for joueur in listeJoueur:
+        for creature in joueur.cartePose:
+            if creature.mal_invocation == 1:
+                creature.mal_invocation = 0
+
+#engage un terrain uniquement
+def engagedMana(objJoueur, objCarte):
+    objJoueur.pointMana['blanc'] += objCarte.mana['blanc']
+    objJoueur.pointMana['rouge'] += objCarte.mana['rouge']
+    objJoueur.pointMana['noir'] += objCarte.mana['noir']
+    objJoueur.pointMana['bleu'] += objCarte.mana['bleu']
+    objJoueur.pointMana['vert'] += objCarte.mana['vert']
+
+    engagedAllCarte(objJoueur, objCarte)
+
+#desengage un terrain uniquement
+def desengagedMana(objJoueur, objCarte):
+    objJoueur.pointMana['blanc'] -= objCarte.mana['blanc']
+    objJoueur.pointMana['rouge'] -= objCarte.mana['rouge']
+    objJoueur.pointMana['noir'] -= objCarte.mana['noir']
+    objJoueur.pointMana['bleu'] -= objCarte.mana['bleu']
+    objJoueur.pointMana['vert'] -= objCarte.mana['vert']
+    
+    desengagedAllCarte(objJoueur, objCarte)
+
+
+#test si un joueur peut desengager un terrain
+def checkDesengagedField(objJoueur, objCarte):
+    pouvoir = TRUE
+    if objCarte.mana['blanc'] > 0:
+        if  objJoueur.pointMana['blanc'] < objCarte.mana['blanc']
+            pouvoir = FALSE
+    elif objCarte.mana['rouge'] > 0:
+        if  objJoueur.pointMana['rouge'] < objCarte.mana['rouge']
+            pouvoir = FALSE
+    elif objCarte.mana['noir'] > 0:
+        if  objJoueur.pointMana['noir'] < objCarte.mana['noir']
+            pouvoir = FALSE
+    elif objCarte.mana['bleu'] > 0:
+        if  objJoueur.pointMana['bleu'] < objCarte.mana['bleu']
+            pouvoir = FALSE
+    elif objCarte.mana['vert'] > 0:
+        if  objJoueur.pointMana['vert'] < objCarte.mana['vert']
+            pouvoir = FALSE
+
+    return pouvoir
+
+#permet dengager toutes les cartes sans prendre en comptes les manas
+def engagedAllCarte(objJoueur, objCarte):
+    objCarte.url_img = 'a'+objCarte.url_img
+    objJoueur.carteEngage.append(objCarte)
+
+#permet desengager toutes les cartes sans prendre en comptes les manas
+def desengagedAllCarte(objJoueur, objCarte):
+    i = 0
+    while objJoueur.carteEngage[i].idCarte != objCarte.idCarte:
+		i=i+1
+    objCarte.url_img = objCarte.url_img[1:len(objCarte.url_img)]
+    del objJoueur.bibliotheque[i]
 

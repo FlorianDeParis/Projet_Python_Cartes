@@ -5,8 +5,8 @@ import socket, sys, pickle
 from joueur import *
 monJoueur = joueur(35,'florian',10,0)
 
-HOST = '192.168.0.15'
-PORT = 40000
+HOST = ''
+PORT = 48000
 
 # 1) creation du socket :
 mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -1,22 +1,16 @@
-Liste du Deck
-Artefact (3) :
-3 Toupie de divination du sensei 
-Créature (23) :
-4 Titan primitif 
-3 Vengeance de Gaia 
-4 Baloth tenace 
-4 Oracle de Mul Daya 
-4 Troll à la trique 
-4 Mystique elfe 
-Enchantement (4) :
-4 Exploration 
-Terrain (10) :
-4 Catacombes verdoyantes 
-4 Forêt pluviale embrumée 
-2 Ancienne tombe 
-Rituel (6) :
-3 Culture 
-3 Portée du kodama 
-Terrain de base (16) :
-16 Forêt 
-Total de Cartes du Deck : 62
+
+3 Toupie de divination du sensei -> 44
+4 Titan primitif -> 39
+3 Vengeance de Gaia -> 36
+4 Baloth tenace -> 38
+3 Oracle de Mul Daya -> 37
+4 Troll à la trique -> 35
+4 Mystique elfe -> 34
+4 Exploration -> 43
+3 Catacombes verdoyantes  -> 42 
+4 Forêt pluviale embrumée -> 40
+2 Ancienne tombe -> 45
+3 Culture -> 33
+3 Portée du kodama  -> 41
+16 Forêt -> 46
+Total de Cartes du Deck : 60

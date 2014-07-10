@@ -333,12 +333,13 @@ def joueurNotToCreature(objCreature):
 #fonction qui ajoute un array sort dans arrayTempSortTour et qui déduit le cout de mana de la carte de la quantité du joueur
     def addSortToTemp(objJA,objSort,objCible,typeCible):
         blocSort = []
-        blocSort.append(objSort.idCarte)
+        blocSort.append(objSort)
         blocSort.append(typeCible)
-        if typeCible == "joueur":
-            blocSort.append(objCible.idCarte)
+        blocSort.append(objCible)
+        """if typeCible == "joueur":
+            blocSort.append(objCible)
         else:
-            blocSort.append(objCible.id)
+            blocSort.append(objCible.id)"""
 
         arrayTempSortTour.append(blocSort)
         objJoueur.pointMana['blanc'] -= objSort.coutInvocation['blanc']

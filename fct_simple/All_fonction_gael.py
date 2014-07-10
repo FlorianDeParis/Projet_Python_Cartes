@@ -267,7 +267,7 @@ def checkCardEngaged(objCard):
 
 #fonction qui verifie si un objet creature peut jouer ou pas "mal d'invocation"
 #prendre en compte la celerite des creatures
-def checkinvocatiuon(objCreature):
+def checkinvocation(objCreature):
     if objCreature.mal_invocation == 0 or "celerite" in objCreature.caracteristique:
         return true
     else:

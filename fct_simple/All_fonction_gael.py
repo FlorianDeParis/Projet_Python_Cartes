@@ -302,7 +302,7 @@ def desengagedMana(objJoueur, objCarte):
     i = 0
     while objJoueur.carteEngage[i].idCarte != objCarte.idCarte:
 		i=i+1
-    objCarte.url_img = objCarte.url_img[1:-1]
+    objCarte.url_img = objCarte.url_img[1:len(objCarte.url_img)]
     del objJoueur.bibliotheque[i]
 
 

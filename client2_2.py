@@ -4,8 +4,13 @@
 
 import socket, sys, pickle
 
+<<<<<<< HEAD
+HOST = '192.168.0.15'
+PORT = 40000
+=======
 HOST = '192.168.0.14'
 PORT = 48000
+>>>>>>> 1d726b0005e2ea92560343f2b8ce97c66cb36120
 
 # 1) creation du socket :
 mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

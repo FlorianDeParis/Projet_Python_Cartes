@@ -287,6 +287,7 @@ def setInvocation():
             if creature.mal_invocation == 1:
                 creature.mal_invocation = 0
 
+#engage un terrain uniquement
 def engagedMana(objJoueur, objCarte):
     objJoueur.pointMana['blanc'] += objCarte.mana['blanc']
     objJoueur.pointMana['rouge'] += objCarte.mana['rouge']
@@ -294,11 +295,9 @@ def engagedMana(objJoueur, objCarte):
     objJoueur.pointMana['bleu'] += objCarte.mana['bleu']
     objJoueur.pointMana['vert'] += objCarte.mana['vert']
 
-    objCarte.url_img = 'a'+objCarte.url_img
-    objJoueur.carteEngage.append(objCarte)
+    engagedAllCarte(objJoueur, objCarte)
 
-
-
+#desengage un terrain uniquement
 def desengagedMana(objJoueur, objCarte):
     objJoueur.pointMana['blanc'] -= objCarte.mana['blanc']
     objJoueur.pointMana['rouge'] -= objCarte.mana['rouge']
@@ -306,14 +305,40 @@ def desengagedMana(objJoueur, objCarte):
     objJoueur.pointMana['bleu'] -= objCarte.mana['bleu']
     objJoueur.pointMana['vert'] -= objCarte.mana['vert']
     
+    desengagedAllCarte(objJoueur, objCarte)
+
+
+#test si un joueur peut desengager un terrain
+def checkDesengagedField(objJoueur, objCarte):
+    pouvoir = TRUE
+    if objCarte.mana['blanc'] > 0:
+        if  objJoueur.pointMana['blanc'] < objCarte.mana['blanc']
+            pouvoir = FALSE
+    elif objCarte.mana['rouge'] > 0:
+        if  objJoueur.pointMana['rouge'] < objCarte.mana['rouge']
+            pouvoir = FALSE
+    elif objCarte.mana['noir'] > 0:
+        if  objJoueur.pointMana['noir'] < objCarte.mana['noir']
+            pouvoir = FALSE
+    elif objCarte.mana['bleu'] > 0:
+        if  objJoueur.pointMana['bleu'] < objCarte.mana['bleu']
+            pouvoir = FALSE
+    elif objCarte.mana['vert'] > 0:
+        if  objJoueur.pointMana['vert'] < objCarte.mana['vert']
+            pouvoir = FALSE
+
+    return pouvoir
+
+#permet dengager toutes les cartes sans prendre en comptes les manas
+def engagedAllCarte(objJoueur, objCarte):
+    objCarte.url_img = 'a'+objCarte.url_img
+    objJoueur.carteEngage.append(objCarte)
+
+#permet desengager toutes les cartes sans prendre en comptes les manas
+def desengagedAllCarte(objJoueur, objCarte):
     i = 0
     while objJoueur.carteEngage[i].idCarte != objCarte.idCarte:
 		i=i+1
     objCarte.url_img = objCarte.url_img[1:len(objCarte.url_img)]
     del objJoueur.bibliotheque[i]
-
-
-
-
-
 

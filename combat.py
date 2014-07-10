@@ -409,6 +409,71 @@ def joueurNotToCreature(objCreature):
             bloquer = true
 
 
+#fonction qui engage une creature attaquante
+    def engageCreatureAttaque(objJoueur, objCreature):
+        arrayCreatureAttack.append(objCreature)
+
+        objJoueur.pointMana['blanc'] -= objCreature.coutInvocation['blanc']
+        objJoueur.pointMana['rouge'] -= objCreature.coutInvocation['rouge']
+        objJoueur.pointMana['noir'] -= objCreature.coutInvocation['noir']
+        objJoueur.pointMana['bleu'] -= objCreature.coutInvocation['bleu']
+        objJoueur.pointMana['vert'] -= objCreature.coutInvocation['vert']
+        
+        if objSort.coutInvocation['incolore'] > 0:
+            decrementeIncolore(objJoueur, objCreature)
+
+#fonction qui engage une creature de defence
+    def engageCreatureAttaque(objJoueurDef, objCreatureAtt, objCreatureDef):
+
+        blocCreat = []
+        blocCreat.append(objCreatureAtt)
+        blocCreat.append(objCreatureDef)
+        
+        addArrayCreatureInList(blocCreat)
+    
+        objJoueurDef.pointMana['blanc'] -= objCreatureDef.coutInvocation['blanc']
+        objJoueurDef.pointMana['rouge'] -= objCreatureDef.coutInvocation['rouge']
+        objJoueurDef.pointMana['noir'] -= objCreatureDef.coutInvocation['noir']
+        objJoueurDef.pointMana['bleu'] -= objCreatureDef.coutInvocation['bleu']
+        objJoueurDef.pointMana['vert'] -= objCreatureDef.coutInvocation['vert']
+    
+        if objSort.coutInvocation['incolore'] > 0:
+            decrementeIncolore(objJoueurDef, objCreatureDef)
+
+#fonction qui enleve une creature attaquante
+    def desengageCreatureAttaque(objJoueur, objCreature):
+        i = 0 # Notre indice pour la boucle while
+        while i < len(arrayCreatureAttack):
+            if objCreature.idCarte == arrayCreatureAttack[i].idCarte:
+                objJoueur.pointMana['blanc'] += objCreature.coutInvocation['blanc']
+                objJoueur.pointMana['rouge'] += objCreature.coutInvocation['rouge']
+                objJoueur.pointMana['noir'] += objCreature.coutInvocation['noir']
+                objJoueur.pointMana['bleu'] += objCreature.coutInvocation['bleu']
+                objJoueur.pointMana['vert'] += objCreature.coutInvocation['vert']
+                
+                del arrayCreatureAttack[i]
+                i=len(arrayCreatureAttack)
+            else:
+                i += 1 # On incrémente i, ne pas oublier !
+
+#fonction qui enleve une creature de defense
+    def desengageCreatureDefense(objJoueur, objCreature):
+        i = 0 # Notre indice pour la boucle while
+        while i < len(blocCreat):
+            if objCreature.idCarte == blocCreat[i][1].idCarte:
+                objJoueur.pointMana['blanc'] += objCreature.coutInvocation['blanc']
+                objJoueur.pointMana['rouge'] += objCreature.coutInvocation['rouge']
+                objJoueur.pointMana['noir'] += objCreature.coutInvocation['noir']
+                objJoueur.pointMana['bleu'] += objCreature.coutInvocation['bleu']
+                objJoueur.pointMana['vert'] += objCreature.coutInvocation['vert']
+            
+                del blocCreat[i]
+                i=len(blocCreat)
+            else:
+                i += 1 # On incrémente i, ne pas oublier !
+
+
+
 
 
 

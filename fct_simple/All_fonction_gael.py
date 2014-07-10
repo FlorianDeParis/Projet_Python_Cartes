@@ -279,3 +279,34 @@ def setInvocation():
         for creature in joueur.cartePose:
             if creature.mal_invocation == 1:
                 creature.mal_invocation = 0
+
+def engagedMana(objJoueur, objCarte):
+    objJoueur.pointMana['blanc'] += objCarte.mana['blanc']
+    objJoueur.pointMana['rouge'] += objCarte.mana['rouge']
+    objJoueur.pointMana['noir'] += objCarte.mana['noir']
+    objJoueur.pointMana['bleu'] += objCarte.mana['bleu']
+    objJoueur.pointMana['vert'] += objCarte.mana['vert']
+
+    objCarte.url_img = 'a'+objCarte.url_img
+    objJoueur.carteEngage.append(objCarte)
+
+
+
+def desengagedMana(objJoueur, objCarte):
+    objJoueur.pointMana['blanc'] -= objCarte.mana['blanc']
+    objJoueur.pointMana['rouge'] -= objCarte.mana['rouge']
+    objJoueur.pointMana['noir'] -= objCarte.mana['noir']
+    objJoueur.pointMana['bleu'] -= objCarte.mana['bleu']
+    objJoueur.pointMana['vert'] -= objCarte.mana['vert']
+    
+    i = 0
+    while objJoueur.carteEngage[i].idCarte != objCarte.idCarte:
+		i=i+1
+    objCarte.url_img = objCarte.url_img[1:-1]
+    del objJoueur.bibliotheque[i]
+
+
+
+
+
+

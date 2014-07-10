@@ -3,7 +3,7 @@ class combat: #declaration class
     def __init__(self):#constructeur
         self.arrayAction = []
         self.arrayCreatureAttack = []
-        self.arrayCreature = []
+        sefl.arrayCreature = []
         self.arrayTempSortTour = []
 
 #fonction qui ajoute un array dans la liste
